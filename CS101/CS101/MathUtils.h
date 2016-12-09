@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Math
+namespace CS101
 {
 	template<typename T>
 	inline int Minimum(T a, T b)

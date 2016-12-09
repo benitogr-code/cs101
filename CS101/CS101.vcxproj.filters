@@ -6,12 +6,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StdAfx.h" />
-    <ClInclude Include="Math\Utils.h">
-      <Filter>Math</Filter>
+    <ClInclude Include="CS101\MathUtils.h">
+      <Filter>CS101</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Math">
+    <Filter Include="CS101">
       <UniqueIdentifier>{f5af8f65-ea4a-4115-bfb7-ce0f7b0d1328}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
