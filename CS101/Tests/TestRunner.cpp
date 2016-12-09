@@ -3,6 +3,7 @@
 
 #include "BaseTest.h"
 #include "TestFibonacci.h"
+#include "TestArray.h"
 
 void RunTest(ETestCase testCase)
 {
@@ -11,6 +12,9 @@ void RunTest(ETestCase testCase)
 	{
 	case ETestCase::Fibonacci:
 		pTest = new CTestFibonacci();
+		break;
+	case ETestCase::Array:
+		pTest = new CTestArray();
 		break;
 	}
 

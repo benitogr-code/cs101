@@ -143,9 +143,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CS101\Array.h" />
     <ClInclude Include="CS101\MathUtils.h" />
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="Tests\BaseTest.h" />
+    <ClInclude Include="Tests\TestArray.h" />
     <ClInclude Include="Tests\TestRunner.h" />
     <ClInclude Include="Tests\TestFibonacci.h" />
   </ItemGroup>
@@ -157,6 +159,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Tests\TestArray.cpp" />
     <ClCompile Include="Tests\TestFibonacci.cpp" />
     <ClCompile Include="Tests\TestRunner.cpp" />
   </ItemGroup>

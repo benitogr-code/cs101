@@ -4,7 +4,8 @@
 
 int main()
 {
-	RunTest(ETestCase::Fibonacci);
+	//RunTest(ETestCase::Fibonacci);
+	RunTest(ETestCase::Array);
 
 	getchar();
 

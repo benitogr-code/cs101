@@ -9,6 +9,9 @@
     <ClCompile Include="Tests\TestRunner.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="Tests\TestArray.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StdAfx.h" />
@@ -22,6 +25,12 @@
       <Filter>Tests</Filter>
     </ClInclude>
     <ClInclude Include="Tests\TestRunner.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="CS101\Array.h">
+      <Filter>CS101</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\TestArray.h">
       <Filter>Tests</Filter>
     </ClInclude>
   </ItemGroup>
