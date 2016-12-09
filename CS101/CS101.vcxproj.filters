@@ -3,16 +3,34 @@
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="StdAfx.cpp" />
+    <ClCompile Include="Tests\TestFibonacci.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\TestRunner.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="CS101\MathUtils.h">
       <Filter>CS101</Filter>
     </ClInclude>
+    <ClInclude Include="Tests\BaseTest.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\TestFibonacci.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\TestRunner.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CS101">
       <UniqueIdentifier>{f5af8f65-ea4a-4115-bfb7-ce0f7b0d1328}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{b938bf40-b70d-4c6c-be2a-393115f6b581}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
