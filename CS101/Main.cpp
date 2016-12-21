@@ -6,7 +6,7 @@ int main()
 {
 	//RunTest(ETestCase::Fibonacci);
 	
-	//RunTest(ETestCase::Array);
+	RunTest(ETestCase::Array);
 
 	RunTest(ETestCase::DynArray);
 

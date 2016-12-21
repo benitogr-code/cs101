@@ -45,16 +45,20 @@ void CTestDynArray::Run()
 
 	///////////////////////////////////////////////////
 
-	CS101::DynArray<Test::SSample> dynArraySample;
+	CS101::DynArray<Test::SSample*> dynArraySample;
 
 	for (int i = 0; i < 7; ++i)
 	{
-		dynArraySample.PushBack(Test::SSample(i, i * 5.0f));
+		dynArraySample.PushBack(new Test::SSample(i, i * 5.0f));
 	}
 
 	printf("DynArray<Test::SSample> - Capacity %u - Size %u\n", dynArraySample.Capacity(), dynArraySample.Size());
 	for (auto iter = dynArraySample.Begin(); iter != dynArraySample.End(); ++iter)
 	{
-		printf("\t Element = [%d], [%.2f]\n", iter->intValue, iter->floatValue);
+		printf("\t Element = [%d], [%.2f]\n", (*iter)->intValue, (*iter)->floatValue);
+	
+		delete (*iter);
 	}
+
+	dynArraySample.Clear();
 }

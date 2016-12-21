@@ -32,30 +32,47 @@ namespace CS101
 		{
 			if (!IsFull())
 			{
-				m_values[m_size] = value;
+				T* pNew = &(reinterpret_cast<T*>(m_values)[m_size]);
+				new (pNew) T(value);
 				m_size++;
 			}
 		}
 
 		inline void PopBack()
 		{
-			m_size -= (m_size > 0) ? 1 : 0;
+			if (m_size > 0)
+			{
+				T& element = At(m_size - 1);
+				element.~T();
+				m_size--;
+			}
 		}
 
 		inline T& operator[](unsigned int index)
 		{
-			assert(index < m_size);
-			return m_values[index];
+			return At(index);
 		}
 
 		inline const T& operator[](unsigned int index) const
 		{
-			assert(index < m_size);
-			return m_values[index];
+			return At(index);
 		}
 
 	private:
-		T            m_values[CAPACITY];
-		unsigned int m_size;
+		T& At(size_t pos)
+		{
+			assert(pos < m_size);
+			return (reinterpret_cast<T*>(m_values)[pos]);
+		}
+
+		const T& At(size_t pos) const
+		{
+			assert(pos < m_size);
+			return (reinterpret_cast<T*>(m_values)[pos]);
+		}
+
+	private:
+		char   m_values[CAPACITY * sizeof(T)];
+		size_t m_size;
 	};
 }

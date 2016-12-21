@@ -44,46 +44,44 @@ namespace CS101
 		// Element access
 		T& operator[](size_t index)
 		{
-			assert(index < m_size);
-			return m_pData[index];
+			return At(index);
 		}
 
 		const T& operator[](size_t index) const
 		{
-			assert(index < m_size);
-			return m_pData[index];
+			return At(index);
 		}
 
 		T& Back()
 		{
 			assert(m_size > 0);
-			return m_pData[m_size - 1];
+			return At(m_size - 1);
 		}
 
 		const T& Back() const
 		{
 			assert(m_size > 0);
-			return m_pData[m_size - 1];
+			return At(m_size - 1);
 		}
 
 		iterator Begin()
 		{
-			return m_pData;
+			return reinterpret_cast<T*>(m_pData);
 		}
 
 		const_iterator Begin() const
 		{
-			return m_pData;
+			return reinterpret_cast<T*>(m_pData);
 		}
 
 		iterator End()
 		{
-			return !Empty() ? &m_pData[m_size-1] : m_pData;
+			return Begin() + m_size;
 		}
 
 		const_iterator End() const
 		{
-			return !Empty() ? &m_pData[m_size-1] : m_pData;
+			return Begin() + m_size;
 		}
 
 		// Modifiers
@@ -94,7 +92,7 @@ namespace CS101
 				Grow(m_capacity * 2);
 			}
 
-			T* pNew = &m_pData[m_size];
+			T* pNew = &(reinterpret_cast<T*>(m_pData)[m_size]);
 			new(pNew) T();
 			m_size++;
 		}
@@ -106,7 +104,7 @@ namespace CS101
 				Grow(m_capacity * 2);
 			}
 
-			T* pNew = &m_pData[m_size];
+			T* pNew = &(reinterpret_cast<T*>(m_pData)[m_size]);
 			new(pNew) T(value);
 			m_size++;
 		}
@@ -141,7 +139,7 @@ namespace CS101
 				newCapacity *= 2;
 			}
 
-			T* pNewData = reinterpret_cast<T*>(new char[sizeof(T)*newCapacity]());
+			char* pNewData = new char[sizeof(T)*newCapacity]();
 			memcpy(pNewData, m_pData, sizeof(T) * m_size);
 
 			delete[] m_pData;
@@ -149,8 +147,20 @@ namespace CS101
 			m_pData = pNewData;
 		}
 
+		T& At(size_t pos)
+		{
+			assert(pos < m_size);
+			return reinterpret_cast<T*>(m_pData)[pos];
+		}
+
+		const T& At(size_t pos) const
+		{
+			assert(pos < m_size);
+			return reinterpret_cast<T*>(m_pData)[pos];
+		}
+
 	private:
-		T*      m_pData;
+		char*   m_pData;
 		size_t  m_capacity;
 		size_t  m_size;
 	};
