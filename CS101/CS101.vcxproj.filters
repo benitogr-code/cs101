@@ -15,6 +15,9 @@
     <ClCompile Include="Tests\TestDynArray.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="Tests\TestStringBuilder.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StdAfx.h" />
@@ -41,6 +44,12 @@
     </ClInclude>
     <ClInclude Include="Tests\TestDynArray.h">
       <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\TestStringBuilder.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="CS101\StringBuilder.h">
+      <Filter>CS101</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
