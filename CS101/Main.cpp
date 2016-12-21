@@ -10,7 +10,9 @@ int main()
 
 	//RunTest(ETestCase::DynArray);
 
-	RunTest(ETestCase::StringBuilder);
+	//RunTest(ETestCase::StringBuilder);
+
+	RunTest(ETestCase::HashMap);
 
 	getchar();
 

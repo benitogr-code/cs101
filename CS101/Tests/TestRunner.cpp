@@ -6,6 +6,7 @@
 #include "TestArray.h"
 #include "TestDynArray.h"
 #include "TestStringBuilder.h"
+#include "TestHashMap.h"
 
 void RunTest(ETestCase testCase)
 {
@@ -23,6 +24,9 @@ void RunTest(ETestCase testCase)
 		break;
 	case ETestCase::StringBuilder:
 		pTest = new CTestStringBuilder();
+		break;
+	case ETestCase::HashMap:
+		pTest = new CTestHashMap();
 		break;
 	}
 

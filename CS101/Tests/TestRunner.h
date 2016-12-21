@@ -6,6 +6,7 @@ enum class ETestCase
 	Array,
 	DynArray,
 	StringBuilder,
+	HashMap,
 };
 
 void RunTest(ETestCase testCase);
