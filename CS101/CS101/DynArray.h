@@ -1,7 +1,5 @@
 #pragma once
 
-#include <assert.h>
-
 namespace CS101
 {
 	template<typename T>
