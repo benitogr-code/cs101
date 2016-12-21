@@ -10,6 +10,7 @@ class CTestArray
 public:
 	CTestArray();
 
+protected:
 	virtual void OnSetup() override;
 	virtual void Run() override;
 

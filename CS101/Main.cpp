@@ -5,10 +5,13 @@
 int main()
 {
 	//RunTest(ETestCase::Fibonacci);
-	RunTest(ETestCase::Array);
+	
+	//RunTest(ETestCase::Array);
+
+	RunTest(ETestCase::DynArray);
 
 	getchar();
 
-    return 0;
+  return 0;
 }
 

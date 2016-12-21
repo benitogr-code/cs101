@@ -1,0 +1,60 @@
+#include "StdAfx.h"
+#include "TestDynArray.h"
+
+#include "CS101/DynArray.h"
+
+namespace Test
+{
+	struct SSample
+	{
+		SSample()
+			: intValue(0)
+			, floatValue(27.5f)
+		{}
+
+		SSample(int _iValue, float _fValue)
+			: intValue(_iValue)
+			, floatValue(_fValue)
+		{
+		}
+
+		int   intValue;
+		float floatValue;
+	};
+}
+
+CTestDynArray::CTestDynArray()
+	: CBaseTest("DynArray")
+{
+}
+
+void CTestDynArray::Run()
+{
+	CS101::DynArray<int> dynArrayIntegers;
+
+	for (int i = 0; i < 16; ++i)
+	{
+		dynArrayIntegers.PushBack(i*i);
+	}
+
+	printf("DynArray<int> - Capacity %u - Size %u\n", dynArrayIntegers.Capacity(), dynArrayIntegers.Size());
+	for (int i = 0; i < dynArrayIntegers.Size(); ++i)
+	{
+		printf("\t Element[%u] = [%d]\n", i, dynArrayIntegers[i]);
+	}
+
+	///////////////////////////////////////////////////
+
+	CS101::DynArray<Test::SSample> dynArraySample;
+
+	for (int i = 0; i < 7; ++i)
+	{
+		dynArraySample.PushBack(Test::SSample(i, i * 5.0f));
+	}
+
+	printf("DynArray<Test::SSample> - Capacity %u - Size %u\n", dynArraySample.Capacity(), dynArraySample.Size());
+	for (auto iter = dynArraySample.Begin(); iter != dynArraySample.End(); ++iter)
+	{
+		printf("\t Element = [%d], [%.2f]\n", iter->intValue, iter->floatValue);
+	}
+}

@@ -4,6 +4,7 @@
 #include "BaseTest.h"
 #include "TestFibonacci.h"
 #include "TestArray.h"
+#include "TestDynArray.h"
 
 void RunTest(ETestCase testCase)
 {
@@ -15,6 +16,9 @@ void RunTest(ETestCase testCase)
 		break;
 	case ETestCase::Array:
 		pTest = new CTestArray();
+		break;
+	case ETestCase::DynArray:
+		pTest = new CTestDynArray();
 		break;
 	}
 
