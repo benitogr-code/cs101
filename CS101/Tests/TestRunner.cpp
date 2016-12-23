@@ -7,6 +7,7 @@
 #include "TestDynArray.h"
 #include "TestStringBuilder.h"
 #include "TestHashMap.h"
+#include "TestLinkedList.h"
 
 void RunTest(ETestCase testCase)
 {
@@ -27,6 +28,9 @@ void RunTest(ETestCase testCase)
 		break;
 	case ETestCase::HashMap:
 		pTest = new CTestHashMap();
+		break;
+	case ETestCase::LinkedList:
+		pTest = new CTestLinkedList();
 		break;
 	}
 

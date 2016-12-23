@@ -148,6 +148,7 @@
     <ClInclude Include="CS101\Array.h" />
     <ClInclude Include="CS101\DynArray.h" />
     <ClInclude Include="CS101\HashMap.h" />
+    <ClInclude Include="CS101\LinkedList.h" />
     <ClInclude Include="CS101\MathUtils.h" />
     <ClInclude Include="CS101\StringBuilder.h" />
     <ClInclude Include="StdAfx.h" />
@@ -155,6 +156,7 @@
     <ClInclude Include="Tests\TestArray.h" />
     <ClInclude Include="Tests\TestDynArray.h" />
     <ClInclude Include="Tests\TestHashMap.h" />
+    <ClInclude Include="Tests\TestLinkedList.h" />
     <ClInclude Include="Tests\TestRunner.h" />
     <ClInclude Include="Tests\TestFibonacci.h" />
     <ClInclude Include="Tests\TestStringBuilder.h" />
@@ -171,6 +173,7 @@
     <ClCompile Include="Tests\TestDynArray.cpp" />
     <ClCompile Include="Tests\TestFibonacci.cpp" />
     <ClCompile Include="Tests\TestHashMap.cpp" />
+    <ClCompile Include="Tests\TestLinkedList.cpp" />
     <ClCompile Include="Tests\TestRunner.cpp" />
     <ClCompile Include="Tests\TestStringBuilder.cpp" />
   </ItemGroup>

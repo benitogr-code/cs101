@@ -7,6 +7,7 @@ enum class ETestCase
 	DynArray,
 	StringBuilder,
 	HashMap,
+	LinkedList,
 };
 
 void RunTest(ETestCase testCase);

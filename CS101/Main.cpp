@@ -12,7 +12,9 @@ int main()
 
 	//RunTest(ETestCase::StringBuilder);
 
-	RunTest(ETestCase::HashMap);
+	//RunTest(ETestCase::HashMap);
+
+	RunTest(ETestCase::LinkedList);
 
 	getchar();
 

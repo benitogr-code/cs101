@@ -21,6 +21,9 @@
     <ClCompile Include="Tests\TestHashMap.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="Tests\TestLinkedList.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StdAfx.h" />
@@ -58,6 +61,12 @@
       <Filter>CS101</Filter>
     </ClInclude>
     <ClInclude Include="Tests\TestHashMap.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="CS101\LinkedList.h">
+      <Filter>CS101</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\TestLinkedList.h">
       <Filter>Tests</Filter>
     </ClInclude>
   </ItemGroup>
