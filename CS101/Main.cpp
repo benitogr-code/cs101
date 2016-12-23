@@ -14,7 +14,9 @@ int main()
 
 	//RunTest(ETestCase::HashMap);
 
-	RunTest(ETestCase::LinkedList);
+	//RunTest(ETestCase::LinkedList);
+
+	RunTest(ETestCase::ProblemStrings);
 
 	getchar();
 

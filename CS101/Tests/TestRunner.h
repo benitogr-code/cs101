@@ -8,6 +8,7 @@ enum class ETestCase
 	StringBuilder,
 	HashMap,
 	LinkedList,
+	ProblemStrings,
 };
 
 void RunTest(ETestCase testCase);

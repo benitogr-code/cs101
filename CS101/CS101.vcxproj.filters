@@ -24,6 +24,12 @@
     <ClCompile Include="Tests\TestLinkedList.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="Problems\ProblemStrings.cpp">
+      <Filter>Problems</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\TestProblemStrings.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StdAfx.h" />
@@ -69,6 +75,12 @@
     <ClInclude Include="Tests\TestLinkedList.h">
       <Filter>Tests</Filter>
     </ClInclude>
+    <ClInclude Include="Problems\ProblemStrings.h">
+      <Filter>Problems</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\TestProblemStrings.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CS101">
@@ -76,6 +88,9 @@
     </Filter>
     <Filter Include="Tests">
       <UniqueIdentifier>{b938bf40-b70d-4c6c-be2a-393115f6b581}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Problems">
+      <UniqueIdentifier>{b33d0a72-8676-48e0-89a6-1fee5ccf232e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
