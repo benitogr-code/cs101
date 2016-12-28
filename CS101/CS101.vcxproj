@@ -150,6 +150,7 @@
     <ClInclude Include="CS101\HashMap.h" />
     <ClInclude Include="CS101\LinkedList.h" />
     <ClInclude Include="CS101\MathUtils.h" />
+    <ClInclude Include="CS101\Stack.h" />
     <ClInclude Include="CS101\StringBuilder.h" />
     <ClInclude Include="Problems\ProblemStrings.h" />
     <ClInclude Include="StdAfx.h" />
@@ -161,6 +162,7 @@
     <ClInclude Include="Tests\TestProblemStrings.h" />
     <ClInclude Include="Tests\TestRunner.h" />
     <ClInclude Include="Tests\TestFibonacci.h" />
+    <ClInclude Include="Tests\TestStack.h" />
     <ClInclude Include="Tests\TestStringBuilder.h" />
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +181,7 @@
     <ClCompile Include="Tests\TestLinkedList.cpp" />
     <ClCompile Include="Tests\TestProblemStrings.cpp" />
     <ClCompile Include="Tests\TestRunner.cpp" />
+    <ClCompile Include="Tests\TestStack.cpp" />
     <ClCompile Include="Tests\TestStringBuilder.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
