@@ -33,6 +33,9 @@
     <ClCompile Include="Tests\TestStack.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="Tests\TestQueue.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StdAfx.h" />
@@ -89,6 +92,12 @@
     </ClInclude>
     <ClInclude Include="Tests\TestStack.h">
       <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\TestQueue.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="CS101\Queue.h">
+      <Filter>CS101</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

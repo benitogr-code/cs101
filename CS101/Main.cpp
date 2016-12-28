@@ -16,7 +16,9 @@ int main()
 
 	//RunTest(ETestCase::LinkedList);
 
-	RunTest(ETestCase::Stack);
+	//RunTest(ETestCase::Stack);
+
+	RunTest(ETestCase::Queue);
 
 	//RunTest(ETestCase::ProblemStrings);
 

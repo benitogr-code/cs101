@@ -9,6 +9,7 @@ enum class ETestCase
 	HashMap,
 	LinkedList,
 	Stack,
+	Queue,
 	ProblemStrings,
 };
 

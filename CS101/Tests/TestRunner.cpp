@@ -9,6 +9,7 @@
 #include "TestHashMap.h"
 #include "TestLinkedList.h"
 #include "TestStack.h"
+#include "TestQueue.h"
 #include "TestProblemStrings.h"
 
 void RunTest(ETestCase testCase)
@@ -36,6 +37,9 @@ void RunTest(ETestCase testCase)
 		break;
 	case ETestCase::Stack:
 		pTest = new CTestStack();
+		break;
+	case ETestCase::Queue:
+		pTest = new CTestQueue();
 		break;
 	case ETestCase::ProblemStrings:
 		pTest = new CTestProblemStrings();
