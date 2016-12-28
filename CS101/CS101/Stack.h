@@ -24,6 +24,14 @@ namespace CS101
 		{
 		}
 
+		~CStack()
+		{
+			while (!Empty())
+			{
+				Pop();
+			}
+		}
+
 		bool Empty() const
 		{
 			return (m_pTop == nullptr);

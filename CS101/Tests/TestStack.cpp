@@ -17,7 +17,7 @@ void CTestStack::Run()
 	stack.Push("Item 04");
 	stack.Push("Item 05");
 
-	printf("Inspecting stack... (Early peek = '%s')\n\n", stack.Peek().c_str());
+	printf("Inspecting stack... (Top peek = '%s')\n\n", stack.Peek().c_str());
 	while (!stack.Empty())
 	{
 		printf("\t%s\n", stack.Pop().c_str());
