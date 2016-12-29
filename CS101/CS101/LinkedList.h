@@ -22,7 +22,16 @@ namespace CS101
 		CLinkedList()
 			: m_pHead(nullptr)
 			, m_pTail(nullptr)
+			, m_size(0)
 		{
+		}
+
+		CLinkedList(const CLinkedList<T>& rhs)
+		{
+			for (auto pNode = rhs.Begin(); pNode != nullptr; pNode = pNode->pNext)
+			{
+				Append(pNode->data);
+			}
 		}
 
 		~CLinkedList()
@@ -55,6 +64,8 @@ namespace CS101
 				m_pTail->pNext = pNewNode;
 				m_pTail = pNewNode;
 			}
+
+			m_size++;
 		}
 
 		void InsertAt(const T& value, size_t index)
@@ -84,6 +95,8 @@ namespace CS101
 				pNewNode->pNext = pNode;
 				m_pHead = pNewNode;
 			}
+
+			m_size++;
 		}
 
 		void RemoveAt(size_t index)
@@ -114,7 +127,14 @@ namespace CS101
 					m_pTail = nullptr;
 			}
 
+			m_size--;
+
 			delete pNode;
+		}
+
+		size_t Size() const
+		{
+			return m_size;
 		}
 
 		const SListNode<T>* Begin() const
@@ -130,5 +150,6 @@ namespace CS101
 	private:
 		SListNode<T>* m_pHead;
 		SListNode<T>* m_pTail;
+		size_t        m_size;
 	};
 }
