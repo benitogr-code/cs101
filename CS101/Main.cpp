@@ -22,7 +22,9 @@ int main()
 
 	//RunTest(ETestCase::ProblemStrings);
 
-	RunTest(ETestCase::ProblemLinkedLists);
+	//RunTest(ETestCase::ProblemLinkedLists);
+
+	RunTest(ETestCase::ProblemStacks);
 
 	getchar();
 

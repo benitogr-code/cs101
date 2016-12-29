@@ -154,6 +154,7 @@
     <ClInclude Include="CS101\Stack.h" />
     <ClInclude Include="CS101\StringBuilder.h" />
     <ClInclude Include="Problems\ProblemLinkedLists.h" />
+    <ClInclude Include="Problems\ProblemStacks.h" />
     <ClInclude Include="Problems\ProblemStrings.h" />
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="Tests\BaseTest.h" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Tests\TestHashMap.h" />
     <ClInclude Include="Tests\TestLinkedList.h" />
     <ClInclude Include="Tests\TestProblemLinkedLists.h" />
+    <ClInclude Include="Tests\TestProblemStacks.h" />
     <ClInclude Include="Tests\TestProblemStrings.h" />
     <ClInclude Include="Tests\TestQueue.h" />
     <ClInclude Include="Tests\TestRunner.h" />
@@ -185,6 +187,7 @@
     <ClCompile Include="Tests\TestHashMap.cpp" />
     <ClCompile Include="Tests\TestLinkedList.cpp" />
     <ClCompile Include="Tests\TestProblemLinkedLists.cpp" />
+    <ClCompile Include="Tests\TestProblemStacks.cpp" />
     <ClCompile Include="Tests\TestProblemStrings.cpp" />
     <ClCompile Include="Tests\TestQueue.cpp" />
     <ClCompile Include="Tests\TestRunner.cpp" />
