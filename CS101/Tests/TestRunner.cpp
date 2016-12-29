@@ -11,6 +11,7 @@
 #include "TestStack.h"
 #include "TestQueue.h"
 #include "TestProblemStrings.h"
+#include "TestProblemLinkedLists.h"
 
 void RunTest(ETestCase testCase)
 {
@@ -43,6 +44,9 @@ void RunTest(ETestCase testCase)
 		break;
 	case ETestCase::ProblemStrings:
 		pTest = new CTestProblemStrings();
+		break;
+	case ETestCase::ProblemLinkedLists:
+		pTest = new CTestProblemLinkedLists();
 		break;
 	}
 

@@ -18,9 +18,11 @@ int main()
 
 	//RunTest(ETestCase::Stack);
 
-	RunTest(ETestCase::Queue);
+	//RunTest(ETestCase::Queue);
 
 	//RunTest(ETestCase::ProblemStrings);
+
+	RunTest(ETestCase::ProblemLinkedLists);
 
 	getchar();
 

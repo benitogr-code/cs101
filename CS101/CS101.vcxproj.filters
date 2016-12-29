@@ -36,6 +36,12 @@
     <ClCompile Include="Tests\TestQueue.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="Problems\ProblemLinkedLists.cpp">
+      <Filter>Problems</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\TestProblemLinkedLists.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StdAfx.h" />
@@ -98,6 +104,12 @@
     </ClInclude>
     <ClInclude Include="CS101\Queue.h">
       <Filter>CS101</Filter>
+    </ClInclude>
+    <ClInclude Include="Problems\ProblemLinkedLists.h">
+      <Filter>Problems</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\TestProblemLinkedLists.h">
+      <Filter>Tests</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

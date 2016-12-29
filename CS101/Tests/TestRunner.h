@@ -11,6 +11,7 @@ enum class ETestCase
 	Stack,
 	Queue,
 	ProblemStrings,
+	ProblemLinkedLists,
 };
 
 void RunTest(ETestCase testCase);
