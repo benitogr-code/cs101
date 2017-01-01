@@ -45,6 +45,9 @@
     <ClCompile Include="Tests\TestProblemStacks.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="Tests\TestGraph.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StdAfx.h" />
@@ -118,6 +121,12 @@
       <Filter>Problems</Filter>
     </ClInclude>
     <ClInclude Include="Tests\TestProblemStacks.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="CS101\Graph.h">
+      <Filter>CS101</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\TestGraph.h">
       <Filter>Tests</Filter>
     </ClInclude>
   </ItemGroup>

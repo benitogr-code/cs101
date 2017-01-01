@@ -10,6 +10,7 @@ enum class ETestCase
 	LinkedList,
 	Stack,
 	Queue,
+	Graph,
 	ProblemStrings,
 	ProblemLinkedLists,
 	ProblemStacks,

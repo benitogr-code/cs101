@@ -20,11 +20,13 @@ int main()
 
 	//RunTest(ETestCase::Queue);
 
+	RunTest(ETestCase::Graph);
+
 	//RunTest(ETestCase::ProblemStrings);
 
 	//RunTest(ETestCase::ProblemLinkedLists);
 
-	RunTest(ETestCase::ProblemStacks);
+	//RunTest(ETestCase::ProblemStacks);
 
 	getchar();
 

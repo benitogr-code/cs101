@@ -24,7 +24,7 @@ void CTestArray::OnSetup()
 
 void CTestArray::Run()
 {
-	printf("Array<int>: Size = %u, Capacity = %u\n", m_intArray.Size(), m_intArray.Capacity());
+	printf("Array<int>: Size = %zu, Capacity = %zu\n", m_intArray.Size(), m_intArray.Capacity());
 	printf("Values:\n");
 
 	for (unsigned int i = 0; i < m_intArray.Size(); ++i)
@@ -32,7 +32,7 @@ void CTestArray::Run()
 		printf("\t[%u] = %d\n", i, m_intArray[i]);
 	}
 
-	printf("\nArray<float>: Size = %u, Capacity = %u\n", m_floatArray.Size(), m_floatArray.Capacity());
+	printf("\nArray<float>: Size = %zu, Capacity = %zu\n", m_floatArray.Size(), m_floatArray.Capacity());
 	printf("Values:\n");
 
 	for (unsigned int i = 0; i < m_floatArray.Size(); ++i)
