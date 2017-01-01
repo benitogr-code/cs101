@@ -11,6 +11,7 @@ enum class ETestCase
 	Stack,
 	Queue,
 	Graph,
+	BSTree,
 	ProblemStrings,
 	ProblemLinkedLists,
 	ProblemStacks,

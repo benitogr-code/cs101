@@ -11,6 +11,7 @@
 #include "TestStack.h"
 #include "TestQueue.h"
 #include "TestGraph.h"
+#include "TestBSTree.h"
 #include "TestProblemStrings.h"
 #include "TestProblemLinkedLists.h"
 #include "TestProblemStacks.h"
@@ -46,6 +47,9 @@ void RunTest(ETestCase testCase)
 		break;
 	case ETestCase::Graph:
 		pTest = new CTestGraph();
+		break;
+	case ETestCase::BSTree:
+		pTest = new CTestBSTree();
 		break;
 	case ETestCase::ProblemStrings:
 		pTest = new CTestProblemStrings();

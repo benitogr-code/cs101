@@ -20,7 +20,9 @@ int main()
 
 	//RunTest(ETestCase::Queue);
 
-	RunTest(ETestCase::Graph);
+	//RunTest(ETestCase::Graph);
+
+	RunTest(ETestCase::BSTree);
 
 	//RunTest(ETestCase::ProblemStrings);
 
