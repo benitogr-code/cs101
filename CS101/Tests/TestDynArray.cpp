@@ -37,7 +37,7 @@ void CTestDynArray::Run()
 		dynArrayIntegers.PushBack(i*i);
 	}
 
-	printf("DynArray<int> - Capacity %u - Size %u\n", dynArrayIntegers.Capacity(), dynArrayIntegers.Size());
+	printf("DynArray<int> - Capacity %zu - Size %zu\n", dynArrayIntegers.Capacity(), dynArrayIntegers.Size());
 	for (int i = 0; i < dynArrayIntegers.Size(); ++i)
 	{
 		printf("\t Element[%u] = [%d]\n", i, dynArrayIntegers[i]);
@@ -52,7 +52,7 @@ void CTestDynArray::Run()
 		dynArraySample.PushBack(new Test::SSample(i, i * 5.0f));
 	}
 
-	printf("DynArray<Test::SSample> - Capacity %u - Size %u\n", dynArraySample.Capacity(), dynArraySample.Size());
+	printf("DynArray<Test::SSample> - Capacity %zu - Size %zu\n", dynArraySample.Capacity(), dynArraySample.Size());
 	for (auto iter = dynArraySample.Begin(); iter != dynArraySample.End(); ++iter)
 	{
 		printf("\t Element = [%d], [%.2f]\n", (*iter)->intValue, (*iter)->floatValue);
