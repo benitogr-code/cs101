@@ -2,7 +2,7 @@
 
 namespace CS101
 {
-	template<typename T, unsigned int CAPACITY>
+	template<typename T, size_t CAPACITY>
 	class Array
 	{
 		static_assert(CAPACITY > 0, "Array capacity must be greater than 0");
@@ -13,12 +13,12 @@ namespace CS101
 		{
 		}
 
-		inline unsigned int Capacity() const
+		inline size_t Capacity() const
 		{
 			return CAPACITY;
 		}
 
-		inline unsigned int Size() const
+		inline size_t Size() const
 		{
 			return m_size;
 		}
