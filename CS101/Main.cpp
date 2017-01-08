@@ -22,13 +22,15 @@ int main()
 
 	//RunTest(ETestCase::Graph);
 
-	RunTest(ETestCase::BSTree);
+	//RunTest(ETestCase::BSTree);
 
 	//RunTest(ETestCase::ProblemStrings);
 
 	//RunTest(ETestCase::ProblemLinkedLists);
 
 	//RunTest(ETestCase::ProblemStacks);
+
+	RunTest(ETestCase::ProblemBits);
 
 	getchar();
 

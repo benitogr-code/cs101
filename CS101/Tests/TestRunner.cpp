@@ -15,6 +15,7 @@
 #include "TestProblemStrings.h"
 #include "TestProblemLinkedLists.h"
 #include "TestProblemStacks.h"
+#include "TestProblemBits.h"
 
 void RunTest(ETestCase testCase)
 {
@@ -59,6 +60,10 @@ void RunTest(ETestCase testCase)
 		break;
 	case ETestCase::ProblemStacks:
 		pTest = new CTestProblemStacks();
+		break;
+	case ETestCase::ProblemBits:
+		pTest = new CTestProblemBits();
+		break;
 	}
 
 	if (pTest)

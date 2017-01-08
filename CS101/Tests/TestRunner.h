@@ -15,6 +15,7 @@ enum class ETestCase
 	ProblemStrings,
 	ProblemLinkedLists,
 	ProblemStacks,
+	ProblemBits,
 };
 
 void RunTest(ETestCase testCase);
