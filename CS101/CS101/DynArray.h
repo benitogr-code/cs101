@@ -26,6 +26,12 @@ namespace CS101
 			Grow(capacity);
 		}
 
+		DynArray(const DynArray<T>& rhs)
+			: DynArray(DefaultSize)
+		{
+			Copy(rhs);
+		}
+
 		~DynArray()
 		{
 			Clear();
@@ -48,6 +54,12 @@ namespace CS101
 		const T& operator[](size_t index) const
 		{
 			return At(index);
+		}
+		
+		T& operator=(const DynArray<T>& rhs)
+		{
+			Copy(rhs);
+			return *this;
 		}
 
 		T& Back()
@@ -155,6 +167,15 @@ namespace CS101
 		{
 			assert(pos < m_size);
 			return reinterpret_cast<T*>(m_pData)[pos];
+		}
+
+		void Copy(const DynArray<T>& rhs)
+		{
+			if (Capacity() < rhs.Size())
+				Grow(rhs.Size());
+
+			memcpy(m_pData, rhs.Begin(), sizeof(T) * rhs.Size());
+			m_size = rhs.Size();
 		}
 
 	private:
