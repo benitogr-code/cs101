@@ -57,6 +57,9 @@
     <ClCompile Include="Tests\TestProblemBits.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="Tests\TestSorting.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StdAfx.h" />
@@ -148,6 +151,12 @@
       <Filter>Problems</Filter>
     </ClInclude>
     <ClInclude Include="Tests\TestProblemBits.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="CS101\Sorting.h">
+      <Filter>CS101</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\TestSorting.h">
       <Filter>Tests</Filter>
     </ClInclude>
   </ItemGroup>

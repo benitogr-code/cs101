@@ -24,13 +24,15 @@ int main()
 
 	//RunTest(ETestCase::BSTree);
 
+	RunTest(ETestCase::Sorting);
+
 	//RunTest(ETestCase::ProblemStrings);
 
 	//RunTest(ETestCase::ProblemLinkedLists);
 
 	//RunTest(ETestCase::ProblemStacks);
 
-	RunTest(ETestCase::ProblemBits);
+	//RunTest(ETestCase::ProblemBits);
 
 	getchar();
 
