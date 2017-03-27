@@ -35,6 +35,14 @@ void CTestSorting::Run()
 
 		PrintValues("Selective sort", tempValues);
 	}
+
+	// Bubble sort
+	{
+		CS101::DynArray<int> tempValues(m_values);
+		CS101::SortBubble(tempValues);
+
+		PrintValues("Bubble sort", tempValues);
+	}
 }
 
 /*static*/ void CTestSorting::PrintValues(const char* szLabel, const CS101::DynArray<int>& values)

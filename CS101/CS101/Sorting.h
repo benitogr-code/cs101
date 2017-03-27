@@ -26,5 +26,21 @@ namespace CS101
 		}
 	}
 
+	template<typename T>
+	void SortBubble(DynArray<T>& items)
+	{
+		for (int i = 0; i < items.Size(); ++i)
+		{
+			for (int j = 0; j < (items.Size() - i - 1); ++j)
+			{
+				if (items[j] <= items[j + 1])
+					continue;
+
+				T temp = items[j];
+				items[j] = items[j + 1];
+				items[j + 1] = temp;
+			}
+		}
+	}
 
 }
