@@ -15,7 +15,7 @@ void CTestSorting::OnSetup()
 {
 	std::random_device rd;
 	std::mt19937 generator(rd());
-	std::uniform_int_distribution<> distribution(1, 128);
+	std::uniform_int_distribution<> distribution(1, 192);
 
 	for (int i = 0; i < ARRAY_VALUES; ++i)
 	{
@@ -30,7 +30,7 @@ void CTestSorting::Run()
 
 	// Selective sort
 	{
-		CS101::DynArray<int> tempValues = m_values;
+		CS101::DynArray<int> tempValues(m_values);
 		CS101::SortSelect(tempValues);
 
 		PrintValues("Selective sort", tempValues);
@@ -42,6 +42,14 @@ void CTestSorting::Run()
 		CS101::SortBubble(tempValues);
 
 		PrintValues("Bubble sort", tempValues);
+	}
+
+	// Insertion sort
+	{
+		CS101::DynArray<int> tempValues(m_values);
+		CS101::SortInsert(tempValues);
+
+		PrintValues("Insertion sort", tempValues);
 	}
 }
 

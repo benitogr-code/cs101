@@ -43,4 +43,18 @@ namespace CS101
 		}
 	}
 
+	template<typename T>
+	void SortInsert(DynArray<T>& items)
+	{
+		for (int i = 1; i < items.Size(); ++i)
+		{
+			for (int j = i; (j > 0) && (items[j] < items[j - 1]); --j)
+			{
+				T temp = items[j];
+				items[j] = items[j - 1];
+				items[j - 1] = temp;
+			}
+		}
+	}
+
 }
