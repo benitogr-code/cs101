@@ -57,4 +57,71 @@ namespace CS101
 		}
 	}
 
+	namespace Private
+	{
+		template<typename T>
+		void Merge(DynArray<T>& items, size_t left, size_t middle, size_t right)
+		{
+			size_t helperSize = (right - left)+1;
+			DynArray<T> helper(helperSize);
+
+			for (size_t i = left; i <= right; ++i)
+				helper.PushBack(items[i]);
+
+			size_t helperMiddle = helper.Size() / 2;
+			helperMiddle = (helperSize % 2 == 0) ? helperMiddle : helperMiddle + 1;
+
+			size_t idxL = 0;
+			size_t idxR = helperMiddle;
+			size_t idxM = left;
+
+			while ((idxL < helperMiddle) && (idxR < helperSize))
+			{
+				if (helper[idxL] <= helper[idxR])
+				{
+					items[idxM] = helper[idxL];
+					++idxL;
+				}
+				else
+				{
+					items[idxM] = helper[idxR];
+					++idxR;
+				}
+				++idxM;
+			}
+
+			while (idxL < helperMiddle)
+			{
+				items[idxM] = helper[idxL];
+				++idxL;
+				++idxM;
+			}
+
+			while (idxR < helperSize)
+			{
+				items[idxM] = helper[idxR];
+				++idxR;
+				++idxM;
+			}
+		}
+
+		template<typename T>
+		void SortMerge(DynArray<T>& items, size_t left, size_t right)
+		{
+			if (left < right)
+			{
+				size_t middle = (left + right) / 2;
+				SortMerge(items, left, middle);
+				SortMerge(items, middle + 1, right);
+				Merge(items, left, middle, right);
+			}
+		}
+	}
+
+	template<typename T>
+	void SortMerge(DynArray<T>& items)
+	{
+		Private::SortMerge(items, 0, items.Size()-1);
+	}
+
 }
