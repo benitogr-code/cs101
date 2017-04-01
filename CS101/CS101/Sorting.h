@@ -116,12 +116,63 @@ namespace CS101
 				Merge(items, left, middle, right);
 			}
 		}
+
+		//////////
+
+		template<typename T>
+		int PerformPartition(DynArray<T>& items, int left, int right)
+		{
+			T pivot = items[(left + right) / 2];
+			
+			while (left <= right)
+			{
+				while (items[left] < pivot)
+					++left;
+				while (items[right] > pivot)
+					--right;
+
+				if (left <= right)
+				{
+					// Swap
+					T temp = items[left];
+					items[left] = items[right];
+					items[right] = temp;
+
+					++left;
+					--right;
+				}
+			}
+
+			return left;
+		}
+
+		template<typename T>
+		void SortQuick(DynArray<T>& items, int left, int right)
+		{
+			int partIdx = PerformPartition(items, left, right);
+			if (left < partIdx - 1)
+			{
+				SortQuick(items, left, partIdx - 1);
+			}
+			if (partIdx < right)
+			{
+				SortQuick(items, partIdx, right);
+			}
+		}
 	}
 
 	template<typename T>
 	void SortMerge(DynArray<T>& items)
 	{
-		Private::SortMerge(items, 0, items.Size()-1);
+		if (items.Size() > 1)
+			Private::SortMerge(items, 0, items.Size()-1);
+	}
+
+	template<typename T>
+	void SortQuick(DynArray<T>& items)
+	{
+		if (items.Size() > 1)
+			Private::SortQuick(items, 0, (int)(items.Size() - 1));
 	}
 
 }

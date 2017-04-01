@@ -59,6 +59,14 @@ void CTestSorting::Run()
 
 		PrintValues("Merge sort", tempValues);
 	}
+
+	// Quick sort
+	{
+		CS101::DynArray<int> tempValues(m_values);
+		CS101::SortQuick(tempValues);
+
+		PrintValues("Quick sort", tempValues);
+	}
 }
 
 /*static*/ void CTestSorting::PrintValues(const char* szLabel, const CS101::DynArray<int>& values)
