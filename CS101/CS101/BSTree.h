@@ -1,5 +1,9 @@
 #pragma once
 
+#include <memory>
+
+#define DEBUG_BS_TREE 0
+
 namespace CS101
 {
 	template<typename T>
@@ -10,21 +14,31 @@ namespace CS101
 			, pLeft(nullptr)
 			, pRight(nullptr)
 		{
+#if DEBUG_BS_TREE
+			printf("\nCreated tree node %d.", data);
+#endif
 		}
 
-		T            data;
-		SBSTreeNode* pLeft;
-		SBSTreeNode* pRight;
+#if DEBUG_BS_TREE
+		~SBSTreeNode()
+		{
+			printf("\nDestroyed tree node %d.", data);
+		}
+#endif
+
+		T data;
+
+		std::shared_ptr<SBSTreeNode> pLeft;
+		std::shared_ptr<SBSTreeNode> pRight;
 	};
+
 
 	template<typename T>
 	class CBSTree
 	{
-	public:
-		typedef typename SBSTreeNode<T> NodeType;
-
 	private:
-		typedef typename std::vector<NodeType*> Nodes;
+		typedef typename SBSTreeNode<T>   NodeType;
+		typedef std::shared_ptr<NodeType> NodeTypePtr;
 
 	public:
 		CBSTree()
@@ -34,18 +48,22 @@ namespace CS101
 
 		~CBSTree()
 		{
-			for (auto pNode : m_nodes)
-			{
-				delete pNode;
-			}
-
-			m_nodes.clear();
-			m_pRoot = nullptr;
+			m_pRoot = Clear(m_pRoot);
 		}
 
 		void Insert(const T& value)
 		{
-			Insert(&m_pRoot, value);
+			m_pRoot = Insert(m_pRoot, value);
+		}
+
+		void Remove(const T& value)
+		{
+			m_pRoot = Remove(m_pRoot, value);
+		}
+
+		bool Contains(const T& value) const
+		{
+			return Contains(m_pRoot, value);
 		}
 
 		size_t Height() const
@@ -70,25 +88,71 @@ namespace CS101
 
 	protected:
 
-		void Insert(NodeType** pRoot, const T& value)
+		NodeTypePtr Insert(NodeTypePtr& pNode, const T& value)
 		{
-			if (*pRoot == nullptr)
+			if (pNode == nullptr)
 			{
-				*pRoot = AddNode(value);
+				return AddNode(value);
 			}
 			else
 			{
-				const T& nodeData = (*pRoot)->data;
+				const T& nodeData = pNode->data;
 				if (nodeData == value)
-					return;
+				{
+					return pNode;
+				}
 				else if (nodeData > value)
-					Insert(&(*pRoot)->pLeft, value);
+				{
+					pNode->pLeft = Insert(pNode->pLeft, value);
+					return pNode;
+				}
 				else
-					Insert(&(*pRoot)->pRight, value);
+				{
+					pNode->pRight = Insert(pNode->pRight, value);
+					return pNode;
+				}
 			}
 		}
 
-		void VisitInOrder(const NodeType* pNode, const std::function<void(const T& value)>& visitor)
+		NodeTypePtr Remove(NodeTypePtr& pNode, const T& value)
+		{
+			if (pNode != nullptr)
+			{
+				const T& nodeData = pNode->data;
+				if (nodeData > value)
+				{
+					pNode->pLeft = Remove(pNode->pLeft, value);
+				}
+				else if (nodeData < value)
+				{
+					pNode->pRight = Remove(pNode->pRight, value);
+				}
+				else
+				{
+					// 1 - No children, just remove itself
+					if ((pNode->pLeft == nullptr) && (pNode->pRight == nullptr))
+						return nullptr;
+
+					// 2 - One children, move it up
+					if (pNode->pLeft == nullptr)
+						return pNode->pRight;
+					if (pNode->pRight == nullptr)
+						return pNode->pLeft;
+
+					// 3- Find smallest value on right side (or biggest on left side)
+					NodeTypePtr pReplacement = RemoveSmallestOnRightBranch(pNode);
+					pReplacement->pLeft = pNode->pLeft;
+					pReplacement->pRight = pNode->pRight;
+
+					return pReplacement;
+				}
+
+			}
+
+			return pNode;
+		}
+
+		void VisitInOrder(const NodeTypePtr& pNode, const std::function<void(const T& value)>& visitor)
 		{
 			if (pNode == nullptr)
 				return;
@@ -98,7 +162,7 @@ namespace CS101
 			VisitInOrder(pNode->pRight, visitor);
 		}
 
-		void VisitPreOrder(const NodeType* pNode, const std::function<void(const T& value)>& visitor)
+		void VisitPreOrder(const NodeTypePtr& pNode, const std::function<void(const T& value)>& visitor)
 		{
 			if (pNode == nullptr)
 				return;
@@ -108,7 +172,7 @@ namespace CS101
 			VisitPreOrder(pNode->pRight, visitor);
 		}
 
-		void VisitPostOrder(const NodeType* pNode, const std::function<void(const T& value)>& visitor)
+		void VisitPostOrder(const NodeTypePtr& pNode, const std::function<void(const T& value)>& visitor)
 		{
 			if (pNode == nullptr)
 				return;
@@ -118,13 +182,23 @@ namespace CS101
 			visitor(pNode->data);
 		}
 
-		NodeType* AddNode(const T& value)
+		NodeTypePtr AddNode(const T& value)
 		{
-			m_nodes.push_back(new NodeType(value));
-			return m_nodes.back();
+			return NodeTypePtr(new NodeType(value));
 		}
 
-		size_t GetHeight(const NodeType* pRoot) const
+		NodeTypePtr Clear(NodeTypePtr& pNode)
+		{
+			if (pNode != nullptr)
+			{
+				pNode->pLeft = Clear(pNode->pLeft);
+				pNode->pRight = Clear(pNode->pRight);
+			}
+
+			return nullptr;
+		}
+
+		size_t GetHeight(const NodeTypePtr& pRoot) const
 		{
 			if (pRoot == nullptr)
 				return 0;
@@ -132,7 +206,7 @@ namespace CS101
 			return std::max<size_t>(GetHeight(pRoot->pLeft), GetHeight(pRoot->pRight)) + 1;
 		}
 
-		bool Find(NodeType* pNode, const T& value) const
+		bool Contains(const NodeTypePtr& pNode, const T& value) const
 		{
 			if (pNode == nullptr)
 				return false;
@@ -145,8 +219,29 @@ namespace CS101
 				return Find(pNode->pRight, value);
 		}
 
+		NodeTypePtr RemoveSmallestOnRightBranch(NodeTypePtr& pNode)
+		{
+			NodeTypePtr pParent = pNode;
+			NodeTypePtr pResult = pNode->pRight;
+
+			bool bHasChildren = false;
+			
+			while (pResult->pLeft)
+			{
+				pParent = pResult;
+				pResult = pResult->pLeft;
+				bHasChildren = true;
+			}
+
+			if (bHasChildren)
+				pParent->pLeft = nullptr;
+			else
+				pParent->pRight = nullptr;
+
+			return pResult;
+		}
+
 	private:
-		Nodes     m_nodes;
-		NodeType* m_pRoot;
+		NodeTypePtr m_pRoot;
 	};
 }

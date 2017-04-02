@@ -1,8 +1,6 @@
 #include "StdAfx.h"
 #include "TestBSTree.h"
 
-#include "CS101/BSTree.h"
-
 CTestBSTree::CTestBSTree()
 	: CBaseTest("BSTree")
 {
@@ -20,27 +18,23 @@ void CTestBSTree::Run()
 
 	printf("BSTree height = %zu\n\n", bsTree.Height());
 
+	PrintTree(bsTree);
+
+	printf("Removing value '5'...\n");
+	bsTree.Remove(5);
+
+	PrintTree(bsTree);
+}
+
+/*static*/ void CTestBSTree::PrintTree(CS101::CBSTree<int>& tree)
+{
 	printf("BSTree in order:");
 	printf("\n\t");
-	bsTree.VisitInOrder([](const int& value) 
-		{
-			printf("%d ", value);
-		}
+	tree.VisitInOrder([](const int& value)
+	{
+		printf("%d ", value);
+	}
 	);
 
-	printf("\nBSTree pre order:");
-	printf("\n\t");
-	bsTree.VisitPreOrder([](const int& value)
-		{
-			printf("%d ", value);
-		}
-	);
-
-	printf("\nBSTree post order:");
-	printf("\n\t");
-	bsTree.VisitPostOrder([](const int& value)
-		{
-			printf("%d ", value);
-		}
-	);
+	printf("\n");
 }
