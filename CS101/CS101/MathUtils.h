@@ -3,9 +3,15 @@
 namespace CS101
 {
 	template<typename T>
-	inline int Minimum(T a, T b)
+	inline T Minimum(T a, T b)
 	{
 		return (a <= b) ? a : b;
+	}
+
+	template<typename T>
+	inline T Maximum(T a, T b)
+	{
+		return (a >= b) ? a : b;
 	}
 
 	inline unsigned int MaxCommonDivisor(unsigned int a, unsigned int b)
