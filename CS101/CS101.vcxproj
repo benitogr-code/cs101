@@ -146,6 +146,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CS101\Array.h" />
+    <ClInclude Include="CS101\AVLTree.h" />
     <ClInclude Include="CS101\BSTree.h" />
     <ClInclude Include="CS101\DynArray.h" />
     <ClInclude Include="CS101\Graph.h" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Problems\ProblemStrings.h" />
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="Tests\BaseTest.h" />
+    <ClInclude Include="Tests\TestAVLTree.h" />
     <ClInclude Include="Tests\TestSorting.h" />
     <ClInclude Include="Tests\TestArray.h" />
     <ClInclude Include="Tests\TestBSTree.h" />
@@ -191,6 +193,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Tests\TestArray.cpp" />
+    <ClCompile Include="Tests\TestAVLTree.cpp" />
     <ClCompile Include="Tests\TestBSTree.cpp" />
     <ClCompile Include="Tests\TestDynArray.cpp" />
     <ClCompile Include="Tests\TestFibonacci.cpp" />

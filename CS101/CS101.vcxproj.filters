@@ -60,6 +60,9 @@
     <ClCompile Include="Tests\TestSorting.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="Tests\TestAVLTree.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StdAfx.h" />
@@ -157,6 +160,12 @@
       <Filter>CS101</Filter>
     </ClInclude>
     <ClInclude Include="Tests\TestSorting.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="CS101\AVLTree.h">
+      <Filter>CS101</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\TestAVLTree.h">
       <Filter>Tests</Filter>
     </ClInclude>
   </ItemGroup>

@@ -22,7 +22,9 @@ int main()
 
 	//RunTest(ETestCase::Graph);
 
-	RunTest(ETestCase::BSTree);
+	//RunTest(ETestCase::BSTree);
+
+	RunTest(ETestCase::AVLTree);
 
 	//RunTest(ETestCase::Sorting);
 

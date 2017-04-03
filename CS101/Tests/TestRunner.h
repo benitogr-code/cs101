@@ -12,6 +12,7 @@ enum class ETestCase
 	Queue,
 	Graph,
 	BSTree,
+	AVLTree,
 	Sorting,
 	ProblemStrings,
 	ProblemLinkedLists,

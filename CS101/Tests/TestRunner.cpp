@@ -12,6 +12,7 @@
 #include "TestQueue.h"
 #include "TestGraph.h"
 #include "TestBSTree.h"
+#include "TestAVLTree.h"
 #include "TestSorting.h"
 #include "TestProblemStrings.h"
 #include "TestProblemLinkedLists.h"
@@ -52,6 +53,9 @@ void RunTest(ETestCase testCase)
 		break;
 	case ETestCase::BSTree:
 		pTest = new CTestBSTree();
+		break;
+	case ETestCase::AVLTree:
+		pTest = new CTestAVLTree();
 		break;
 	case ETestCase::Sorting:
 		pTest = new CTestSorting();
