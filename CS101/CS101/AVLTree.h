@@ -4,8 +4,14 @@
 
 #include <memory>
 
+#define DEBUG_AVL_TREE 0
+
 namespace CS101
 {
+#if DEBUG_AVL_TREE
+	static int g_AVLTreeNodeCounter = 0;
+#endif
+
 	template<typename T>
 	struct SAVLTreeNode
 	{
@@ -13,7 +19,17 @@ namespace CS101
 			: key(_key)
 			, height(1)
 		{
+#if DEBUG_AVL_TREE
+			printf("\nAVLTreeNode (C-> %d).", ++g_AVLTreeNodeCounter);
+#endif
 		}
+
+#if DEBUG_AVL_TREE
+		~SAVLTreeNode()
+		{
+			printf("\nAVLTreeNode (D->%d).", --g_AVLTreeNodeCounter);
+		}
+#endif
 
 		T   key;
 		int height;
@@ -30,7 +46,11 @@ namespace CS101
 		typedef typename std::shared_ptr<NodeType> NodeTypePtr;
 
 	public:
-
+		~CAVLTree()
+		{
+			m_pRoot = Clear(m_pRoot);
+		}
+		
 		int Height() const
 		{
 			return GetNodeHeight(m_pRoot);
@@ -198,6 +218,17 @@ namespace CS101
 
 			return pNode;
 		
+		}
+
+		NodeTypePtr Clear(NodeTypePtr pNode)
+		{
+			if (pNode != nullptr)
+			{
+				pNode->pLeft = Clear(pNode->pLeft);
+				pNode->pRight = Clear(pNode->pRight);
+			}
+
+			return nullptr;
 		}
 
 		NodeTypePtr RotateLeft(NodeTypePtr pRoot)

@@ -6,6 +6,11 @@
 
 namespace CS101
 {
+
+#if DEBUG_BS_TREE
+	static int g_BSTreeNodeCounter = 0;
+#endif
+	
 	template<typename T>
 	struct SBSTreeNode
 	{
@@ -15,14 +20,14 @@ namespace CS101
 			, pRight(nullptr)
 		{
 #if DEBUG_BS_TREE
-			printf("\nCreated tree node %d.", data);
+			printf("\nBSTreeNode (C-> %d).", ++g_BSTreeNodeCounter);
 #endif
 		}
 
 #if DEBUG_BS_TREE
 		~SBSTreeNode()
 		{
-			printf("\nDestroyed tree node %d.", data);
+			printf("\nBSTreeNode (D->%d).", --g_BSTreeNodeCounter);
 		}
 #endif
 
