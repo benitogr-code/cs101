@@ -41,6 +41,11 @@ namespace CS101
 			m_pRoot = Insert(m_pRoot, key);
 		}
 
+		void Remove(const T& key)
+		{
+			m_pRoot = Remove(m_pRoot, key);
+		}
+
 		void VisitPreOrder(const std::function<void(const T& key)>& visitor)
 		{
 			VisitPreOrder(m_pRoot, visitor);
@@ -63,6 +68,17 @@ namespace CS101
 			{
 				return 0;
 			}
+		}
+
+		NodeTypePtr FindSmallestKey(const NodeTypePtr& pNode) const
+		{
+			assert(pNode != nullptr);
+
+			NodeTypePtr pResult = pNode;
+			while (pResult->pLeft != nullptr)
+				pResult = pResult->pLeft;
+
+			return pResult;
 		}
 
 		NodeTypePtr AddNode(const T& key) const
@@ -112,6 +128,76 @@ namespace CS101
 			}
 
 			return pNode;
+		}
+
+		NodeTypePtr Remove(NodeTypePtr pNode, const T& key)
+		{
+			// BST removal
+			if (pNode == nullptr)
+				return pNode;
+
+			if (key < pNode->key)
+			{
+				pNode->pLeft = Remove(pNode->pLeft, key);
+			}
+			else if (key > pNode->key)
+			{
+				pNode->pRight = Remove(pNode->pRight, key);
+			}
+			else
+			{
+				// Node has no child, just remove it
+				if ((pNode->pLeft == nullptr) && (pNode->pRight == nullptr))
+				{
+					return nullptr;
+				}
+				else if (pNode->pLeft == nullptr)
+				{
+					pNode = pNode->pRight;
+				}
+				else if (pNode->pRight == nullptr)
+				{
+					pNode = pNode->pLeft;
+				}
+				else
+				{
+					NodeTypePtr pReplacement = FindSmallestKey(pNode);
+					
+					pNode->key = pReplacement->key;
+					pNode->pRight = Remove(pNode->pRight, key);
+				}
+			}
+
+			// Update height
+			pNode->height = 1 + Maximum(GetNodeHeight(pNode->pLeft), GetNodeHeight(pNode->pRight));
+
+			// Re-balance if needed
+			const int balance = GetNodeBalance(pNode);
+
+			// Left-Left
+			if ((balance > 1) && (GetNodeBalance(pNode->pLeft) >= 0))
+				return RotateRight(pNode);
+
+			// Right-Right
+			if ((balance < -1) && (GetNodeBalance(pNode->pRight) <= 0))
+				return RotateLeft(pNode);
+
+			// Left-Right
+			if ((balance > 1) && (GetNodeBalance(pNode->pLeft) < 0))
+			{
+				pNode->pLeft = RotateLeft(pNode->pLeft);
+				return RotateRight(pNode);
+			}
+
+			// Right-Left
+			if ((balance < -1) && (GetNodeBalance(pNode->pRight) > 0))
+			{
+				pNode->pRight = RotateRight(pNode->pRight);
+				return RotateLeft(pNode);
+			}
+
+			return pNode;
+		
 		}
 
 		NodeTypePtr RotateLeft(NodeTypePtr pRoot)
