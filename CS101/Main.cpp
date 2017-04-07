@@ -26,9 +26,9 @@ int main()
 
 	//RunTest(ETestCase::AVLTree);
 
-	RunTest(ETestCase::MinHeap);
+	//RunTest(ETestCase::MinHeap);
 
-	//RunTest(ETestCase::Sorting);
+	RunTest(ETestCase::Sorting);
 
 	//RunTest(ETestCase::ProblemStrings);
 

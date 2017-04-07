@@ -67,6 +67,14 @@ void CTestSorting::Run()
 
 		PrintValues("Quick sort", tempValues);
 	}
+
+	// Heap sort
+	{
+		CS101::DynArray<int> tempValues(m_values);
+		CS101::SortHeap(tempValues);
+
+		PrintValues("Heap sort", tempValues);
+	}
 }
 
 /*static*/ void CTestSorting::PrintValues(const char* szLabel, const CS101::DynArray<int>& values)

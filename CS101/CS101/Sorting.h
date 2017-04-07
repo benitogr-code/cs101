@@ -159,6 +159,30 @@ namespace CS101
 				SortQuick(items, partIdx, right);
 			}
 		}
+
+		////////////////////////////
+		template<typename T>
+		void Heapify(DynArray<T>& items, size_t itemCount, size_t idx)
+		{
+			size_t lIdx = (idx * 2) + 1;
+			size_t rIdx = (idx * 2) + 2;
+			size_t bIdx = idx;
+
+			if ((lIdx < itemCount) && (items[lIdx] > items[bIdx]))
+				bIdx = lIdx;
+
+			if ((rIdx < itemCount) && (items[rIdx] > items[bIdx]))
+				bIdx = rIdx;
+
+			if (idx != bIdx)
+			{
+				T maxValue = items[bIdx];
+				items[bIdx] = items[idx];
+				items[idx] = maxValue;
+
+				Heapify(items, itemCount, bIdx);
+			}
+		}
 	}
 
 	template<typename T>
@@ -173,6 +197,25 @@ namespace CS101
 	{
 		if (items.Size() > 1)
 			Private::SortQuick(items, 0, (int)(items.Size() - 1));
+	}
+
+	template<typename T>
+	void SortHeap(DynArray<T>& items)
+	{
+		const size_t itemCount = items.Size();
+		for (int i = (int)(itemCount / 2) - 1; i >= 0; --i)
+		{
+			Private::Heapify(items, itemCount, (size_t)i);
+		}
+
+		for (size_t i = itemCount - 1; i > 0; --i)
+		{
+			T maxValue = items[0];
+			items[0] = items[i];
+			items[i] = maxValue;
+
+			Private::Heapify(items, i, 0);
+		}
 	}
 
 }
