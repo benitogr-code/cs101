@@ -13,6 +13,7 @@ enum class ETestCase
 	Graph,
 	BSTree,
 	AVLTree,
+	MinHeap,
 	Sorting,
 	ProblemStrings,
 	ProblemLinkedLists,

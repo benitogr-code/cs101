@@ -24,7 +24,9 @@ int main()
 
 	//RunTest(ETestCase::BSTree);
 
-	RunTest(ETestCase::AVLTree);
+	//RunTest(ETestCase::AVLTree);
+
+	RunTest(ETestCase::MinHeap);
 
 	//RunTest(ETestCase::Sorting);
 
