@@ -15,6 +15,7 @@ enum class ETestCase
 	AVLTree,
 	MinHeap,
 	Sorting,
+	Utils,
 	ProblemStrings,
 	ProblemLinkedLists,
 	ProblemStacks,

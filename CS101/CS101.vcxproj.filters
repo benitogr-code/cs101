@@ -66,6 +66,12 @@
     <ClCompile Include="Tests\TestMinHeap.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="Tests\TestUtils.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="CS101\Utils.cpp">
+      <Filter>CS101</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StdAfx.h" />
@@ -175,6 +181,12 @@
       <Filter>CS101</Filter>
     </ClInclude>
     <ClInclude Include="Tests\TestMinHeap.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="CS101\Utils.h">
+      <Filter>CS101</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\TestUtils.h">
       <Filter>Tests</Filter>
     </ClInclude>
   </ItemGroup>

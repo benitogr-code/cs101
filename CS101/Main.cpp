@@ -28,7 +28,9 @@ int main()
 
 	//RunTest(ETestCase::MinHeap);
 
-	RunTest(ETestCase::Sorting);
+	//RunTest(ETestCase::Sorting);
+
+	RunTest(ETestCase::Utils);
 
 	//RunTest(ETestCase::ProblemStrings);
 
