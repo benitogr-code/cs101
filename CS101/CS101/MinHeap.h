@@ -145,7 +145,7 @@ namespace CS101
 		}
 
 	private:
-		DynArray<T> m_heapArray;
-		size_t      m_capacity;
+		CDynArray<T> m_heapArray;
+		size_t       m_capacity;
 	};
 }

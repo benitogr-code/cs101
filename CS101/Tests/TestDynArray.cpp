@@ -30,7 +30,7 @@ CTestDynArray::CTestDynArray()
 
 void CTestDynArray::Run()
 {
-	CS101::DynArray<int> dynArrayIntegers;
+	CS101::CDynArray<int> dynArrayIntegers;
 
 	for (int i = 0; i < 16; ++i)
 	{
@@ -45,7 +45,7 @@ void CTestDynArray::Run()
 
 	///////////////////////////////////////////////////
 
-	CS101::DynArray<Test::SSample*> dynArraySample;
+	CS101::CDynArray<Test::SSample*> dynArraySample;
 
 	for (int i = 0; i < 7; ++i)
 	{

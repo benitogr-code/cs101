@@ -14,8 +14,8 @@ protected:
 	virtual void Run() override;
 
 private:
-	static void PrintValues(const char* szLabel, const CS101::DynArray<int>& values);
+	static void PrintValues(const char* szLabel, const CS101::CDynArray<int>& values);
 
 private:
-	CS101::DynArray<int> m_values;
+	CS101::CDynArray<int> m_values;
 };
