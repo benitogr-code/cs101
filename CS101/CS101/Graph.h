@@ -56,7 +56,7 @@ namespace CS101
 				return;
 
 			SGraphNode<T>& ref = const_cast<SGraphNode<T>&>(*itNode2);
-			SGraphNode<T>::Edges& n1Edges = const_cast<SGraphNode<T>::Edges&>(itNode1->edges);
+			typename SGraphNode<T>::Edges& n1Edges = const_cast<typename SGraphNode<T>::Edges&>(itNode1->edges);
 			n1Edges.insert(&(ref));
 		}
 
@@ -118,7 +118,7 @@ namespace CS101
 
 		void PrepareForSearch()
 		{
-			for (Nodes::iterator it = m_nodes.begin(); it != m_nodes.end(); ++it)
+			for (typename Nodes::iterator it = m_nodes.begin(); it != m_nodes.end(); ++it)
 			{
 				const_cast<SGraphNode<T>&>(*it).state = SGraphNode<T>::EState::NotVisited;
 			}

@@ -4,6 +4,8 @@
 
 namespace Problems
 {
+	// Description:
+	// Sort the contents of stack using another stack
 	template<typename T>
 	void SortStack(CS101::CStack<T>& stack)
 	{

@@ -42,8 +42,8 @@ namespace CS101
 	class CAVLTree
 	{
 	private:
-		typedef typename SAVLTreeNode<T>           NodeType;
-		typedef typename std::shared_ptr<NodeType> NodeTypePtr;
+		typedef SAVLTreeNode<T>           NodeType;
+		typedef std::shared_ptr<NodeType> NodeTypePtr;
 
 	public:
 		~CAVLTree()

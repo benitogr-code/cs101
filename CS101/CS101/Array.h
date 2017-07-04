@@ -3,12 +3,12 @@
 namespace CS101
 {
 	template<typename T, size_t CAPACITY>
-	class Array
+	class CArray
 	{
 		static_assert(CAPACITY > 0, "Array capacity must be greater than 0");
 
 	public:
-		Array()
+		CArray()
 			: m_size(0)
 		{
 		}

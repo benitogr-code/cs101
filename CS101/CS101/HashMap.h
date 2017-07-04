@@ -32,28 +32,28 @@ namespace CS101
 	{
 	private:
 
-		template<typename KEY, typename VALUE>
+		template<typename NODE_KEY, typename NODE_VALUE>
 		class CNode
 		{
 		public:
-			CNode(const KEY& key, const VALUE& value)
+			CNode(const NODE_KEY& key, const NODE_VALUE& value)
 				: m_key(key)
 				, m_value(value)
 				, m_pNext(nullptr)
 			{
 			}
 
-			const KEY&   Key() const { return m_key; }
+			const NODE_KEY&   Key() const { return m_key; }
 			
-			void        SetValue(const VALUE& value) { m_value = value; }
-			const VALUE Value() const { return m_value; }
+			void        SetValue(const NODE_VALUE& value) { m_value = value; }
+			const NODE_VALUE Value() const { return m_value; }
 
 			void   SetNext(CNode* pNode) { m_pNext = pNode; }
 			CNode* Next() { return m_pNext; }
 
 		private:
-			KEY    m_key;
-			VALUE  m_value;
+			NODE_KEY    m_key;
+			NODE_VALUE  m_value;
 			CNode* m_pNext;
 		};
 

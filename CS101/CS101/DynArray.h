@@ -3,7 +3,7 @@
 namespace CS101
 {
 	template<typename T>
-	class DynArray
+	class CDynArray
 	{
 	private:
 		enum { DefaultSize = 4 };
@@ -13,12 +13,12 @@ namespace CS101
 		typedef const T* const_iterator;
 
 	public:
-		DynArray()
-			: DynArray(DefaultSize)
+		CDynArray()
+			: CDynArray(DefaultSize)
 		{
 		}
 
-		explicit DynArray(size_t capacity)
+		explicit CDynArray(size_t capacity)
 			: m_pData(nullptr)
 			, m_capacity(DefaultSize)
 			, m_size(0)
@@ -26,13 +26,13 @@ namespace CS101
 			Grow(capacity);
 		}
 
-		DynArray(const DynArray<T>& rhs)
-			: DynArray(DefaultSize)
+		CDynArray(const CDynArray<T>& rhs)
+			: CDynArray(DefaultSize)
 		{
 			Copy(rhs);
 		}
 
-		~DynArray()
+		~CDynArray()
 		{
 			Clear();
 
@@ -56,7 +56,7 @@ namespace CS101
 			return At(index);
 		}
 		
-		T& operator=(const DynArray<T>& rhs)
+		T& operator=(const CDynArray<T>& rhs)
 		{
 			Copy(rhs);
 			return *this;
@@ -169,7 +169,7 @@ namespace CS101
 			return reinterpret_cast<T*>(m_pData)[pos];
 		}
 
-		void Copy(const DynArray<T>& rhs)
+		void Copy(const CDynArray<T>& rhs)
 		{
 			if (Capacity() < rhs.Size())
 				Grow(rhs.Size());

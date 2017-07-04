@@ -5,7 +5,7 @@
 namespace CS101
 {
 	template<typename T>
-	void SortSelect(DynArray<T>& items)
+	void SortSelect(CDynArray<T>& items)
 	{
 		for (size_t i = 0; i < (items.Size() - 1); ++i)
 		{
@@ -27,7 +27,7 @@ namespace CS101
 	}
 
 	template<typename T>
-	void SortBubble(DynArray<T>& items)
+	void SortBubble(CDynArray<T>& items)
 	{
 		for (int i = 0; i < items.Size(); ++i)
 		{
@@ -44,7 +44,7 @@ namespace CS101
 	}
 
 	template<typename T>
-	void SortInsert(DynArray<T>& items)
+	void SortInsert(CDynArray<T>& items)
 	{
 		for (int i = 1; i < items.Size(); ++i)
 		{
@@ -60,10 +60,10 @@ namespace CS101
 	namespace Private
 	{
 		template<typename T>
-		void Merge(DynArray<T>& items, size_t left, size_t middle, size_t right)
+		void Merge(CDynArray<T>& items, size_t left, size_t middle, size_t right)
 		{
 			size_t helperSize = (right - left)+1;
-			DynArray<T> helper(helperSize);
+			CDynArray<T> helper(helperSize);
 
 			for (size_t i = left; i <= right; ++i)
 				helper.PushBack(items[i]);
@@ -106,7 +106,7 @@ namespace CS101
 		}
 
 		template<typename T>
-		void SortMerge(DynArray<T>& items, size_t left, size_t right)
+		void SortMerge(CDynArray<T>& items, size_t left, size_t right)
 		{
 			if (left < right)
 			{
@@ -120,7 +120,7 @@ namespace CS101
 		//////////
 
 		template<typename T>
-		int PerformPartition(DynArray<T>& items, int left, int right)
+		int PerformPartition(CDynArray<T>& items, int left, int right)
 		{
 			T pivot = items[(left + right) / 2];
 			
@@ -147,7 +147,7 @@ namespace CS101
 		}
 
 		template<typename T>
-		void SortQuick(DynArray<T>& items, int left, int right)
+		void SortQuick(CDynArray<T>& items, int left, int right)
 		{
 			int partIdx = PerformPartition(items, left, right);
 			if (left < partIdx - 1)
@@ -162,7 +162,7 @@ namespace CS101
 
 		////////////////////////////
 		template<typename T>
-		void Heapify(DynArray<T>& items, size_t itemCount, size_t idx)
+		void Heapify(CDynArray<T>& items, size_t itemCount, size_t idx)
 		{
 			size_t lIdx = (idx * 2) + 1;
 			size_t rIdx = (idx * 2) + 2;
@@ -186,21 +186,21 @@ namespace CS101
 	}
 
 	template<typename T>
-	void SortMerge(DynArray<T>& items)
+	void SortMerge(CDynArray<T>& items)
 	{
 		if (items.Size() > 1)
 			Private::SortMerge(items, 0, items.Size()-1);
 	}
 
 	template<typename T>
-	void SortQuick(DynArray<T>& items)
+	void SortQuick(CDynArray<T>& items)
 	{
 		if (items.Size() > 1)
 			Private::SortQuick(items, 0, (int)(items.Size() - 1));
 	}
 
 	template<typename T>
-	void SortHeap(DynArray<T>& items)
+	void SortHeap(CDynArray<T>& items)
 	{
 		const size_t itemCount = items.Size();
 		for (int i = (int)(itemCount / 2) - 1; i >= 0; --i)

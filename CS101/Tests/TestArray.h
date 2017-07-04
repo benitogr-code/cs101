@@ -15,6 +15,6 @@ protected:
 	virtual void Run() override;
 
 private:
-	CS101::Array<int, 32>   m_intArray;
-	CS101::Array<float, 16> m_floatArray;
+	CS101::CArray<int, 32>   m_intArray;
+	CS101::CArray<float, 16> m_floatArray;
 };

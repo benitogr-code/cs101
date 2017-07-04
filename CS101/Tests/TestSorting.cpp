@@ -30,7 +30,7 @@ void CTestSorting::Run()
 
 	// Selective sort
 	{
-		CS101::DynArray<int> tempValues(m_values);
+		CS101::CDynArray<int> tempValues(m_values);
 		CS101::SortSelect(tempValues);
 
 		PrintValues("Selective sort", tempValues);
@@ -38,7 +38,7 @@ void CTestSorting::Run()
 
 	// Bubble sort
 	{
-		CS101::DynArray<int> tempValues(m_values);
+		CS101::CDynArray<int> tempValues(m_values);
 		CS101::SortBubble(tempValues);
 
 		PrintValues("Bubble sort", tempValues);
@@ -46,7 +46,7 @@ void CTestSorting::Run()
 
 	// Insertion sort
 	{
-		CS101::DynArray<int> tempValues(m_values);
+		CS101::CDynArray<int> tempValues(m_values);
 		CS101::SortInsert(tempValues);
 
 		PrintValues("Insertion sort", tempValues);
@@ -54,7 +54,7 @@ void CTestSorting::Run()
 
 	// Merge sort
 	{
-		CS101::DynArray<int> tempValues(m_values);
+		CS101::CDynArray<int> tempValues(m_values);
 		CS101::SortMerge(tempValues);
 
 		PrintValues("Merge sort", tempValues);
@@ -62,7 +62,7 @@ void CTestSorting::Run()
 
 	// Quick sort
 	{
-		CS101::DynArray<int> tempValues(m_values);
+		CS101::CDynArray<int> tempValues(m_values);
 		CS101::SortQuick(tempValues);
 
 		PrintValues("Quick sort", tempValues);
@@ -70,14 +70,14 @@ void CTestSorting::Run()
 
 	// Heap sort
 	{
-		CS101::DynArray<int> tempValues(m_values);
+		CS101::CDynArray<int> tempValues(m_values);
 		CS101::SortHeap(tempValues);
 
 		PrintValues("Heap sort", tempValues);
 	}
 }
 
-/*static*/ void CTestSorting::PrintValues(const char* szLabel, const CS101::DynArray<int>& values)
+/*static*/ void CTestSorting::PrintValues(const char* szLabel, const CS101::CDynArray<int>& values)
 {
 	printf("%s: \n\t", szLabel);
 	for (int i = 0; i < values.Size(); ++i)
