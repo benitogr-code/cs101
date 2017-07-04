@@ -42,7 +42,7 @@ namespace CS101
 	class CBSTree
 	{
 	private:
-		typedef typename SBSTreeNode<T>   NodeType;
+		typedef SBSTreeNode<T>   NodeType;
 		typedef std::shared_ptr<NodeType> NodeTypePtr;
 
 	public:
