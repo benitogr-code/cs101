@@ -13,13 +13,13 @@ namespace Problems
 
 		for (size_t i = 0; i < str1.length(); ++i)
 		{
-			lookupTable[str1[i]]++;
+			lookupTable[(int)str1[i]]++;
 		}
 
 		for (size_t i = 0; i < str2.length(); ++i)
 		{
-			lookupTable[str2[i]]--;
-			if (lookupTable[str2[i]] < 0)
+			lookupTable[(int)str2[i]]--;
+			if (lookupTable[(int)str2[i]] < 0)
 				return false;
 		}
 
