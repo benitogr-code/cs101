@@ -9,6 +9,8 @@ include_directories ("${PROJECT_SOURCE_DIR}/CS101")
 set(cs101_sources
 	CS101/CS101/Array.h
 	CS101/CS101/AVLTree.h
+	CS101/CS101/BigInt.h
+	CS101/CS101/BigInt.cpp
 	CS101/CS101/BSTree.h
 	CS101/CS101/DynArray.h
 	CS101/CS101/Graph.h
@@ -40,6 +42,8 @@ set(tests_sources
 	CS101/Tests/TestArray.cpp
 	CS101/Tests/TestAVLTree.h
 	CS101/Tests/TestAVLTree.cpp
+	CS101/Tests/TestBigInt.h
+	CS101/Tests/TestBigInt.cpp
 	CS101/Tests/TestBSTree.h
 	CS101/Tests/TestBSTree.cpp
 	CS101/Tests/TestDynArray.h

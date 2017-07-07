@@ -30,8 +30,10 @@ int main()
 
 	//RunTest(ETestCase::Sorting);
 
-	RunTest(ETestCase::Utils);
+	//RunTest(ETestCase::Utils);
 
+	RunTest(ETestCase::BigInt);
+	
 	//RunTest(ETestCase::ProblemStrings);
 
 	//RunTest(ETestCase::ProblemLinkedLists);

@@ -16,6 +16,7 @@ enum class ETestCase
 	MinHeap,
 	Sorting,
 	Utils,
+	BigInt,
 	ProblemStrings,
 	ProblemLinkedLists,
 	ProblemStacks,

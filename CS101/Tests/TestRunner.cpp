@@ -16,6 +16,7 @@
 #include "TestMinHeap.h"
 #include "TestSorting.h"
 #include "TestUtils.h"
+#include "TestBigInt.h"
 #include "TestProblemStrings.h"
 #include "TestProblemLinkedLists.h"
 #include "TestProblemStacks.h"
@@ -67,6 +68,9 @@ void RunTest(ETestCase testCase)
 		break;
 	case ETestCase::Utils:
 		pTest = new CTestUtils();
+		break;
+	case ETestCase::BigInt:
+		pTest = new CTestBigInt();
 		break;
 	case ETestCase::ProblemStrings:
 		pTest = new CTestProblemStrings();
