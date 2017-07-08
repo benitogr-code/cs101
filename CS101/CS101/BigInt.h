@@ -21,7 +21,15 @@ namespace CS101
 		void operator=(const CBigInt& value);
 		
 		bool operator==(const CBigInt& rhs) const;
+		bool operator!=(const CBigInt& rhs) const;
+		
 		bool operator<(const CBigInt& rhs) const;
+		bool operator<=(const CBigInt& rhs) const;
+		
+		bool operator>(const CBigInt& rhs) const;
+		bool operator>=(const CBigInt& rhs) const;
+		
+		CBigInt operator-() const;
 		
 		CBigInt operator+(long long value) const;
 		CBigInt operator+(const CBigInt& value) const;
@@ -35,10 +43,17 @@ namespace CS101
 		CBigInt& operator-=(long long value);
 		CBigInt& operator-=(const CBigInt& value);
 		
+		CBigInt operator*(long long value) const;
+		CBigInt operator*(const CBigInt& value) const;
+		
+		CBigInt& operator*=(long long value);
+		CBigInt& operator*=(const CBigInt& value);
+		
 		std::string ToString() const;
 		
 	private:
-		void Trim();
+		void    Trim();
+		static CBigInt Sum(const CBigInt& a, const CBigInt& b, size_t shift = 0);
 		
 	private:
 		Storage m_data;
