@@ -27,6 +27,8 @@ set(cs101_sources
 )
 
 set(problems_sources
+	CS101/Problems/ProblemBacktracking.h
+	CS101/Problems/ProblemBacktracking.cpp
 	CS101/Problems/ProblemBits.h
 	CS101/Problems/ProblemBits.cpp
 	CS101/Problems/ProblemLinkedLists.h
@@ -58,6 +60,8 @@ set(tests_sources
 	CS101/Tests/TestLinkedList.cpp
 	CS101/Tests/TestMinHeap.h
 	CS101/Tests/TestMinHeap.cpp
+	CS101/Tests/TestProblemBacktracking.h
+	CS101/Tests/TestProblemBacktracking.cpp
 	CS101/Tests/TestProblemBits.h
 	CS101/Tests/TestProblemBits.cpp
 	CS101/Tests/TestProblemLinkedLists.h

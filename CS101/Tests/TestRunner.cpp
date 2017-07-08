@@ -21,6 +21,7 @@
 #include "TestProblemLinkedLists.h"
 #include "TestProblemStacks.h"
 #include "TestProblemBits.h"
+#include "TestProblemBacktracking.h"
 
 void RunTest(ETestCase testCase)
 {
@@ -83,6 +84,9 @@ void RunTest(ETestCase testCase)
 		break;
 	case ETestCase::ProblemBits:
 		pTest = new CTestProblemBits();
+		break;
+	case ETestCase::ProblemBackTracking:
+		pTest = new CTestProblemBacktracking();
 		break;
 	}
 

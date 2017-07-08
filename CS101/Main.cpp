@@ -32,7 +32,7 @@ int main()
 
 	//RunTest(ETestCase::Utils);
 
-	RunTest(ETestCase::BigInt);
+	//RunTest(ETestCase::BigInt);
 	
 	//RunTest(ETestCase::ProblemStrings);
 
@@ -41,8 +41,10 @@ int main()
 	//RunTest(ETestCase::ProblemStacks);
 
 	//RunTest(ETestCase::ProblemBits);
+	
+	RunTest(ETestCase::ProblemBackTracking);
 
-	getchar();
+	//getchar();
 
   return 0;
 }

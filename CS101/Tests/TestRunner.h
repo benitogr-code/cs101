@@ -21,6 +21,7 @@ enum class ETestCase
 	ProblemLinkedLists,
 	ProblemStacks,
 	ProblemBits,
+	ProblemBackTracking
 };
 
 void RunTest(ETestCase testCase);
