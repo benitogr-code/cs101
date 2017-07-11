@@ -2,8 +2,6 @@
 
 #include "MathUtils.h"
 
-#include <memory>
-
 #define DEBUG_AVL_TREE 0
 
 namespace CS101

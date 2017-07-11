@@ -1,7 +1,5 @@
 #pragma once
 
-#include <memory>
-
 #define DEBUG_BS_TREE 0
 
 namespace CS101

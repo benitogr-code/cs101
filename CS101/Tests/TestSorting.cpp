@@ -1,8 +1,6 @@
 #include "StdAfx.h"
 #include "TestSorting.h"
 
-#include <random>
-
 #define ARRAY_VALUES 37
 
 CTestSorting::CTestSorting()
