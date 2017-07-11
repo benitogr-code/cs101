@@ -56,10 +56,9 @@ namespace CS101
 			return At(index);
 		}
 		
-		T& operator=(const CDynArray<T>& rhs)
+		void operator=(const CDynArray<T>& rhs)
 		{
 			Copy(rhs);
-			return *this;
 		}
 
 		T& Back()
