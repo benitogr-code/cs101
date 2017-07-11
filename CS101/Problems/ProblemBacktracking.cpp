@@ -49,6 +49,76 @@ namespace Problems
 				}
 			}
 		}
+		
+		//////////////////////////////////////////
+		
+		struct SKnapsackHelper
+		{
+			SKnapsackHelper(int _maxWeight)
+				: currentWeight(0)
+				, currentValue(0)
+				, bestValue(0)
+				, maxWeight(_maxWeight)
+			{
+			}
+			
+			void AddItem(int idx, int w, int v)
+			{
+				current.PushBack(idx);
+				currentWeight += w;
+				currentValue += v;
+			}
+			
+			void PopItem(int w, int v)
+			{
+				current.PopBack();
+				currentWeight -= w;
+				currentValue -= v;
+			}
+			
+			void UpdateBestResult()
+			{
+				if (currentValue <= bestValue)
+					return;
+				
+				bestValue = currentValue;
+				best = current;
+			}
+			
+			CDynArray<int> current;
+			CDynArray<int> best;
+			
+			int currentWeight;
+			int currentValue;
+			
+			int bestValue;
+			
+			const int maxWeight;
+		};
+		
+		void SolveKnapsack(const int itemIdx, const CDynArray<SKnapsackItem>& items, SKnapsackHelper& helper)
+		{
+			if (itemIdx >= items.Size())
+				return;
+			
+			// 1 - Try adding the current item (if possible)
+			const auto& item = items[itemIdx];
+			const int newWeight = helper.currentWeight + item.weight;
+			if (newWeight <= helper.maxWeight)
+			{
+				helper.AddItem(itemIdx, item.weight, item.value);
+				helper.UpdateBestResult();
+				
+				// If there is space left, continue exploring
+				if (newWeight < helper.maxWeight)
+					SolveKnapsack(itemIdx + 1, items, helper);
+				
+				helper.PopItem(item.weight, item.value);
+			}
+			
+			// 2 - Evaluate without adding the current item
+			SolveKnapsack(itemIdx + 1, items, helper);
+		}
 	}
 	
 	void SolveEightQueens(CLinkedList< CDynArray<int>>& solutions)
@@ -58,4 +128,13 @@ namespace Problems
 		
 		Private::SolveEightQueens(solutions, board, diagDesc, diagAsc);
 	}
+	
+	void SolveKnapsack(const CDynArray<SKnapsackItem>& items, const int maxWeight, CDynArray<int>& solution)
+	{
+		Private::SKnapsackHelper helper(maxWeight);
+		Private::SolveKnapsack(0, items, helper);
+		
+		solution = helper.best;
+	}
+	
 }
