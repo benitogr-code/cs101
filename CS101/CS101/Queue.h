@@ -27,15 +27,20 @@ namespace CS101
 
 		~CQueue()
 		{
-			while (!Empty())
-			{
-				Pop();
-			}
+			Clear();
 		}
 
 		bool Empty() const
 		{
 			return (m_pFront == nullptr);
+		}
+		
+		void Clear()
+		{
+			while (!Empty())
+			{
+				Pop();
+			}
 		}
 
 		void Push(const T& value)
