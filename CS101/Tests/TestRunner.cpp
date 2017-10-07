@@ -10,6 +10,7 @@
 #include "TestLinkedList.h"
 #include "TestStack.h"
 #include "TestQueue.h"
+#include "TestMTQueue.h"
 #include "TestGraph.h"
 #include "TestBSTree.h"
 #include "TestAVLTree.h"
@@ -51,6 +52,9 @@ void RunTest(ETestCase testCase)
 		break;
 	case ETestCase::Queue:
 		pTest = new CTestQueue();
+		break;
+	case ETestCase::MTQueue:
+		pTest = new CTestMTQueue();
 		break;
 	case ETestCase::Graph:
 		pTest = new CTestGraph();

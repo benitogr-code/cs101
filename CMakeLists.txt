@@ -18,6 +18,7 @@ set(cs101_sources
 	CS101/CS101/LinkedList.h
 	CS101/CS101/MathUtils.h
 	CS101/CS101/MinHeap.h
+	CS101/CS101/MTQueue.h
 	CS101/CS101/Queue.h
 	CS101/CS101/Sorting.h
 	CS101/CS101/Stack.h
@@ -60,6 +61,8 @@ set(tests_sources
 	CS101/Tests/TestLinkedList.cpp
 	CS101/Tests/TestMinHeap.h
 	CS101/Tests/TestMinHeap.cpp
+	CS101/Tests/TestMTQueue.h
+	CS101/Tests/TestMTQueue.cpp
 	CS101/Tests/TestProblemBacktracking.h
 	CS101/Tests/TestProblemBacktracking.cpp
 	CS101/Tests/TestProblemBits.h

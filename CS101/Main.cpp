@@ -19,6 +19,8 @@ int main()
 	//RunTest(ETestCase::Stack);
 
 	//RunTest(ETestCase::Queue);
+	
+	RunTest(ETestCase::MTQueue);
 
 	//RunTest(ETestCase::Graph);
 
@@ -42,7 +44,7 @@ int main()
 
 	//RunTest(ETestCase::ProblemBits);
 	
-	RunTest(ETestCase::ProblemBackTracking);
+	//RunTest(ETestCase::ProblemBackTracking);
 
 	//getchar();
 
