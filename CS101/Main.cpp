@@ -20,7 +20,7 @@ int main()
 
 	//RunTest(ETestCase::Queue);
 	
-	RunTest(ETestCase::MTQueue);
+	//RunTest(ETestCase::MTQueue);
 
 	//RunTest(ETestCase::Graph);
 
@@ -33,6 +33,8 @@ int main()
 	//RunTest(ETestCase::Sorting);
 
 	//RunTest(ETestCase::Utils);
+	
+	RunTest(ETestCase::Trie);
 
 	//RunTest(ETestCase::BigInt);
 	

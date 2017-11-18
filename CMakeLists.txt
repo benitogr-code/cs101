@@ -25,6 +25,7 @@ set(cs101_sources
 	CS101/CS101/StringBuilder.h
 	CS101/CS101/Utils.h
 	CS101/CS101/Utils.cpp
+	CS101/CS101/Trie.h
 )
 
 set(problems_sources
@@ -85,6 +86,8 @@ set(tests_sources
 	CS101/Tests/TestStringBuilder.cpp
 	CS101/Tests/TestUtils.h
 	CS101/Tests/TestUtils.cpp
+	CS101/Tests/TestTrie.h
+	CS101/Tests/TestTrie.cpp
 )
 
 set(main_sources
