@@ -63,7 +63,7 @@ namespace CS101
 		return true;
 	}
 	
-	bool CBigInt::operator!=(const CBigInt::CBigInt& rhs) const
+	bool CBigInt::operator!=(const CBigInt& rhs) const
 	{
 		return !(*this == rhs);
 	}

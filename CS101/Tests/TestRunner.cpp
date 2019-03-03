@@ -11,7 +11,6 @@
 #include "TestStack.h"
 #include "TestQueue.h"
 #include "TestMTQueue.h"
-#include "TestGraph.h"
 #include "TestBSTree.h"
 #include "TestAVLTree.h"
 #include "TestMinHeap.h"
@@ -56,9 +55,6 @@ void RunTest(ETestCase testCase)
 		break;
 	case ETestCase::MTQueue:
 		pTest = new CTestMTQueue();
-		break;
-	case ETestCase::Graph:
-		pTest = new CTestGraph();
 		break;
 	case ETestCase::BSTree:
 		pTest = new CTestBSTree();

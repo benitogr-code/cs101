@@ -11,7 +11,6 @@ enum class ETestCase
 	Stack,
 	Queue,
 	MTQueue,
-	Graph,
 	BSTree,
 	AVLTree,
 	MinHeap,

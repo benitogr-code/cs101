@@ -13,7 +13,6 @@ set(cs101_sources
 	CS101/CS101/BigInt.cpp
 	CS101/CS101/BSTree.h
 	CS101/CS101/DynArray.h
-	CS101/CS101/Graph.h
 	CS101/CS101/HashMap.h
 	CS101/CS101/LinkedList.h
 	CS101/CS101/MathUtils.h
@@ -54,8 +53,6 @@ set(tests_sources
 	CS101/Tests/TestDynArray.cpp
 	CS101/Tests/TestFibonacci.h
 	CS101/Tests/TestFibonacci.cpp
-	CS101/Tests/TestGraph.h
-	CS101/Tests/TestGraph.cpp
 	CS101/Tests/TestHashMap.h
 	CS101/Tests/TestHashMap.cpp
 	CS101/Tests/TestLinkedList.h
