@@ -7,7 +7,7 @@ namespace Problems
 {
 	// Description:
 	// Eight Queens problem -> https://en.wikipedia.org/wiki/Eight_queens_puzzle
-	void SolveEightQueens(CS101::CLinkedList< CS101::CDynArray<int> >& solutions);
+	void SolveEightQueens(CS101::CLinkedList< CDynArray<int> >& solutions);
 	
 	struct SKnapsackItem
 	{
@@ -29,6 +29,6 @@ namespace Problems
 	
 	// Description
 	// Knapsack problem (Recursive) -> https://en.wikipedia.org/wiki/Knapsack_problem
-	void SolveKnapsack(const CS101::CDynArray<SKnapsackItem>& items, const int maxWeight, CS101::CDynArray<int>& solution);
+	void SolveKnapsack(const CDynArray<SKnapsackItem>& items, const int maxWeight, CDynArray<int>& solution);
 	
 }

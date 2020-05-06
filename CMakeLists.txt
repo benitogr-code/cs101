@@ -39,54 +39,6 @@ set(problems_sources
 	src/Problems/ProblemStrings.cpp
 )
 
-set(tests_sources
-	src/Tests/BaseTest.h
-	src/Tests/TestArray.h
-	src/Tests/TestArray.cpp
-	src/Tests/TestAVLTree.h
-	src/Tests/TestAVLTree.cpp
-	src/Tests/TestBigInt.h
-	src/Tests/TestBigInt.cpp
-	src/Tests/TestBSTree.h
-	src/Tests/TestBSTree.cpp
-	src/Tests/TestDynArray.h
-	src/Tests/TestDynArray.cpp
-	src/Tests/TestFibonacci.h
-	src/Tests/TestFibonacci.cpp
-	src/Tests/TestHashMap.h
-	src/Tests/TestHashMap.cpp
-	src/Tests/TestLinkedList.h
-	src/Tests/TestLinkedList.cpp
-	src/Tests/TestMinHeap.h
-	src/Tests/TestMinHeap.cpp
-	src/Tests/TestMTQueue.h
-	src/Tests/TestMTQueue.cpp
-	src/Tests/TestProblemBacktracking.h
-	src/Tests/TestProblemBacktracking.cpp
-	src/Tests/TestProblemBits.h
-	src/Tests/TestProblemBits.cpp
-	src/Tests/TestProblemLinkedLists.h
-	src/Tests/TestProblemLinkedLists.cpp
-	src/Tests/TestProblemStacks.h
-	src/Tests/TestProblemStacks.cpp
-	src/Tests/TestProblemStrings.h
-	src/Tests/TestProblemStrings.cpp
-	src/Tests/TestQueue.h
-	src/Tests/TestQueue.cpp
-	src/Tests/TestRunner.h
-	src/Tests/TestRunner.cpp
-	src/Tests/TestSorting.h
-	src/Tests/TestSorting.cpp
-	src/Tests/TestStack.h
-	src/Tests/TestStack.cpp
-	src/Tests/TestStringBuilder.h
-	src/Tests/TestStringBuilder.cpp
-	src/Tests/TestUtils.h
-	src/Tests/TestUtils.cpp
-	src/Tests/TestTrie.h
-	src/Tests/TestTrie.cpp
-)
-
 set(main_sources
 	src/pch.h
 	src/pch.cpp
@@ -96,13 +48,11 @@ set(main_sources
 add_executable(CS101
 	${lib_sources}
 	${problems_sources}
-	${tests_sources}
 	${main_sources}
 )
 
 source_group(lib FILES ${lib_sources})
 source_group(problems FILES ${problems_sources})
-source_group(tests FILES ${tests_sources})
 source_group(\\ FILES ${main_sources})
 
 #install (TARGETS CS101 DESTINATION Bin)
