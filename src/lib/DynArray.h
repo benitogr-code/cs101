@@ -1,10 +1,14 @@
 #pragma once
 
+#include <assert.h>
+#include <new>
+#include <string.h>
+
 /**
-	Templated array with dynamic capacity.
+	Array with dynamic capacity
 	Memory is dynamically allocated and resized as required.
 
-	Usage: CArray<float, 8>, CArray<MyType, 32>, ...
+	Usage: CDynArray<int>, CDynArray<MyType>, ...
 */
 template<typename T>
 class CDynArray

@@ -1,7 +1,4 @@
-#include "pch.h"
 #include "ProblemBacktracking.h"
-
-using namespace CS101;
 
 #define EIGHT_QUEENS_COUNT 8
 

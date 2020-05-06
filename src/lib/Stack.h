@@ -1,78 +1,84 @@
 #pragma once
 
-namespace CS101
+template<typename T>
+struct SStackItem
 {
-	template<typename T>
-	struct SStackItem
+	SStackItem(const T& value)
+		: data(value)
+		, pNext(nullptr)
 	{
-		SStackItem(const T& value)
-			: data(value)
-			, pNext(nullptr)
-		{
-		}
+	}
 
-		T           data;
-		SStackItem* pNext;
-	};
+	T           data;
+	SStackItem* pNext;
+};
 
-	template<typename T>
-	class CStack
+/**
+	Stack
+	Implemented as a linked list with a single front pointer.
+	Memory is allocated/ deallocated as data is push/ pop from it.
+
+	Usage: CQueue<int>, CQueue<MyType>, ...
+*/
+
+template<typename T>
+class CStack
+{
+public:
+	CStack()
+		: m_pTop(nullptr)
 	{
-	public:
-		CStack()
-			: m_pTop(nullptr)
+	}
+
+	~CStack()
+	{
+		while (!Empty())
 		{
+			Pop();
 		}
+	}
 
-		~CStack()
+	bool Empty() const
+	{
+		return (m_pTop == nullptr);
+	}
+
+	void Push(const T& value)
+	{
+		auto pNewItem = new SStackItem<T>(value);
+
+		if (m_pTop == nullptr)
 		{
-			while (!Empty())
-			{
-				Pop();
-			}
+			m_pTop = pNewItem;
 		}
-
-		bool Empty() const
+		else
 		{
-			return (m_pTop == nullptr);
+			pNewItem->pNext = m_pTop;
+			m_pTop = pNewItem;
 		}
+	}
 
-		void Push(const T& value)
-		{
-			auto pNewItem = new SStackItem<T>(value);
+	const T& Peek() const
+	{
+		assert(!Empty());
 
-			if (m_pTop == nullptr)
-			{
-				m_pTop = pNewItem;
-			}
-			else
-			{
-				pNewItem->pNext = m_pTop;
-				m_pTop = pNewItem;
-			}
-		}
+		return m_pTop->data;
+	}
 
-		const T& Peek() const
-		{
-			assert(!Empty());
+	T Pop()
+	{
+		assert(!Empty());
 
-			return m_pTop->data;
-		}
+		T result = m_pTop->data;
 
-		T Pop()
-		{
-			assert(!Empty());
+		auto pNewTop = m_pTop->pNext;
+		delete m_pTop;
+		m_pTop = pNewTop;
 
-			T result = m_pTop->data;
+		return result;
+	}
 
-			auto pNewTop = m_pTop->pNext;
-			delete m_pTop;
-			m_pTop = pNewTop;
+private:
+	SStackItem<T>* m_pTop;
+};
 
-			return result;
-		}
-
-	private:
-		SStackItem<T>* m_pTop;
-	};
-}

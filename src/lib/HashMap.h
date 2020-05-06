@@ -1,166 +1,158 @@
 #pragma once
 
-namespace CS101
+enum { eHashMapSize = 512 };
+
+template<typename KEY>
+struct SDefaultHash
 {
-	enum { eHashMapSize = 512 };
-
-	template<typename KEY>
-	struct SDefaultHash
+	unsigned long operator()(const KEY& key) const
 	{
-		unsigned long operator()(const KEY& key) const
-		{
-			return static_cast<unsigned long>(key) % eHashMapSize;
-		}
-	};
+		return static_cast<unsigned long>(key) % eHashMapSize;
+	}
+};
 
-	struct SStringHash
+/**
+	HashMap
+	Assign key/valure pairs to a indexed bucket.
+	Each bucket contains a linked list to avoid collisions.
+
+	Usage: CHashMap<int, MyType>, CHashMap<string, MyType, StringHashFunc>, ...
+*/
+
+template<typename KEY, typename VALUE, typename HASH_FUNC = SDefaultHash<KEY>>
+class CHashMap
+{
+private:
+
+	template<typename NODE_KEY, typename NODE_VALUE>
+	class CNode
 	{
-		unsigned long operator()(const std::string& key) const
-		{
-			unsigned long hash = 1024 * 32;
-			for (int i = 0; i < key.length(); i += 3)
-			{
-				hash += key.at(i);
-			}
-
-			return (hash % eHashMapSize);
-		}
-	};
-
-	template<typename KEY, typename VALUE, typename HASH_FUNC = SDefaultHash<KEY>>
-	class CHashMap
-	{
-	private:
-
-		template<typename NODE_KEY, typename NODE_VALUE>
-		class CNode
-		{
-		public:
-			CNode(const NODE_KEY& key, const NODE_VALUE& value)
-				: m_key(key)
-				, m_value(value)
-				, m_pNext(nullptr)
-			{
-			}
-
-			const NODE_KEY&   Key() const { return m_key; }
-			
-			void        SetValue(const NODE_VALUE& value) { m_value = value; }
-			const NODE_VALUE Value() const { return m_value; }
-
-			void   SetNext(CNode* pNode) { m_pNext = pNode; }
-			CNode* Next() { return m_pNext; }
-
-		private:
-			NODE_KEY    m_key;
-			NODE_VALUE  m_value;
-			CNode* m_pNext;
-		};
-
 	public:
-		CHashMap()
+		CNode(const NODE_KEY& key, const NODE_VALUE& value)
+			: m_key(key)
+			, m_value(value)
+			, m_pNext(nullptr)
 		{
-			m_pTable = new CNode<KEY, VALUE>*[eHashMapSize]();
 		}
 
-		~CHashMap()
+		const NODE_KEY& Key() const { return m_key; }
+
+		void        SetValue(const NODE_VALUE& value) { m_value = value; }
+		const NODE_VALUE Value() const { return m_value; }
+
+		void   SetNext(CNode* pNode) { m_pNext = pNode; }
+		CNode* Next() { return m_pNext; }
+
+	private:
+		NODE_KEY    m_key;
+		NODE_VALUE  m_value;
+		CNode* m_pNext;
+	};
+
+public:
+	CHashMap()
+	{
+		m_pTable = new CNode<KEY, VALUE> * [eHashMapSize]();
+	}
+
+	~CHashMap()
+	{
+		for (int i = 0; i < eHashMapSize; ++i)
 		{
-			for (int i = 0; i < eHashMapSize; ++i)
+			CNode<KEY, VALUE>* pNode = m_pTable[i];
+			while (pNode != nullptr)
 			{
-				CNode<KEY, VALUE>* pNode = m_pTable[i];
-				while (pNode != nullptr)
-				{
-					CNode<KEY, VALUE>* pCurrent = pNode;
-					pNode = pNode->Next();
-					delete pCurrent;
-				}
-
-				m_pTable[i] = nullptr;
-			}
-
-			delete[] m_pTable;
-		}
-
-		void Insert(const KEY& key, const VALUE& value)
-		{
-			unsigned long hashIndex = m_hashFunc(key);
-
-			CNode<KEY, VALUE>* pNode = m_pTable[hashIndex];
-			CNode<KEY, VALUE>* pLastNode = nullptr;
-
-			while ((pNode != nullptr) && (pNode->Key() != key))
-			{
-				pLastNode = pNode;
+				CNode<KEY, VALUE>* pCurrent = pNode;
 				pNode = pNode->Next();
+				delete pCurrent;
 			}
 
-			if (pNode == nullptr)
+			m_pTable[i] = nullptr;
+		}
+
+		delete[] m_pTable;
+	}
+
+	void Insert(const KEY& key, const VALUE& value)
+	{
+		unsigned long hashIndex = m_hashFunc(key);
+
+		CNode<KEY, VALUE>* pNode = m_pTable[hashIndex];
+		CNode<KEY, VALUE>* pLastNode = nullptr;
+
+		while ((pNode != nullptr) && (pNode->Key() != key))
+		{
+			pLastNode = pNode;
+			pNode = pNode->Next();
+		}
+
+		if (pNode == nullptr)
+		{
+			pNode = new CNode<KEY, VALUE>(key, value);
+			if (pLastNode != nullptr)
 			{
-				pNode = new CNode<KEY, VALUE>(key, value);
-				if (pLastNode != nullptr)
-				{
-					pLastNode->SetNext(pNode);
-				}
-				else
-				{
-					m_pTable[hashIndex] = pNode;
-				}
+				pLastNode->SetNext(pNode);
 			}
 			else
 			{
-				pNode->SetValue(value);
+				m_pTable[hashIndex] = pNode;
 			}
 		}
-
-		void Remove(const KEY& key)
+		else
 		{
-			unsigned long hashIndex = m_hashFunc(key);
-
-			CNode<KEY, VALUE>* pNode = m_pTable[hashIndex];
-			CNode<KEY, VALUE>* pPrev = nullptr;
-
-			while ((pNode != nullptr) && (pNode->Key() != key))
-			{
-				pPrev = pNode;
-				pNode = pNode->Next();
-			}
-
-			if (pNode != nullptr)
-			{
-				if (pPrev != nullptr)
-				{
-					pPrev->SetNext(pNode->Next());
-				}
-				else
-				{
-					m_pTable[hashIndex] = pNode->Next();
-				}
-
-				delete pNode;
-			}
+			pNode->SetValue(value);
 		}
+	}
 
-		bool TryGet(const KEY& key, VALUE& outValue) const
+	void Remove(const KEY& key)
+	{
+		unsigned long hashIndex = m_hashFunc(key);
+
+		CNode<KEY, VALUE>* pNode = m_pTable[hashIndex];
+		CNode<KEY, VALUE>* pPrev = nullptr;
+
+		while ((pNode != nullptr) && (pNode->Key() != key))
 		{
-			unsigned long hashIndex = m_hashFunc(key);
-
-			CNode<KEY, VALUE>* pNode = m_pTable[hashIndex];
-			while (pNode != nullptr)
-			{
-				if (pNode->Key() == key)
-				{
-					outValue = pNode->Value();
-					return true;
-				}
-
-				pNode = pNode->Next();
-			}
-
-			return false;
+			pPrev = pNode;
+			pNode = pNode->Next();
 		}
 
-	private:
-		CNode<KEY, VALUE>** m_pTable;
-		HASH_FUNC           m_hashFunc;
-	};
-}
+		if (pNode != nullptr)
+		{
+			if (pPrev != nullptr)
+			{
+				pPrev->SetNext(pNode->Next());
+			}
+			else
+			{
+				m_pTable[hashIndex] = pNode->Next();
+			}
+
+			delete pNode;
+		}
+	}
+
+	bool TryGet(const KEY& key, VALUE& outValue) const
+	{
+		unsigned long hashIndex = m_hashFunc(key);
+
+		CNode<KEY, VALUE>* pNode = m_pTable[hashIndex];
+		while (pNode != nullptr)
+		{
+			if (pNode->Key() == key)
+			{
+				outValue = pNode->Value();
+				return true;
+			}
+
+			pNode = pNode->Next();
+		}
+
+		return false;
+	}
+
+private:
+	CNode<KEY, VALUE>** m_pTable;
+	HASH_FUNC           m_hashFunc;
+};
+

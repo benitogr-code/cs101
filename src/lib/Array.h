@@ -1,7 +1,7 @@
 #pragma once
 
 /**
-	Templated array with fixed capacity.
+	Array with fixed capacity.
 	Memory is statically allocated, not resizable.
 
 	Usage: CArray<float, 8>, CArray<MyType, 32>, ...

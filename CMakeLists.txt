@@ -15,14 +15,11 @@ set(lib_sources
 	src/lib/DynArray.h
 	src/lib/HashMap.h
 	src/lib/LinkedList.h
-	src/lib/MathUtils.h
 	src/lib/MinHeap.h
-	src/lib/MTQueue.h
 	src/lib/Queue.h
 	src/lib/Sorting.h
 	src/lib/Stack.h
 	src/lib/StringBuilder.h
-	src/lib/Trie.h
 )
 
 set(problems_sources
@@ -31,8 +28,6 @@ set(problems_sources
 )
 
 set(main_sources
-	src/pch.h
-	src/pch.cpp
 	src/main.cpp
 )
 

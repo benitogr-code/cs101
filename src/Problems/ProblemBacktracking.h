@@ -7,7 +7,7 @@ namespace Problems
 {
 	// Description:
 	// Eight Queens problem -> https://en.wikipedia.org/wiki/Eight_queens_puzzle
-	void SolveEightQueens(CS101::CLinkedList< CDynArray<int> >& solutions);
+	void SolveEightQueens(CLinkedList< CDynArray<int> >& solutions);
 	
 	struct SKnapsackItem
 	{
