@@ -31,7 +31,7 @@ namespace Problems
 			}
 			else
 			{
-				int currentRow = board.Size();
+				int currentRow = (int)board.Size();
 				for (int i = 1; i <= EIGHT_QUEENS_COUNT; ++i)
 				{
 					if (!IsColumnFree(board, i) || !IsColumnFree(diagDesc, (i - currentRow)) || !IsColumnFree(diagAsc, (i + currentRow)))

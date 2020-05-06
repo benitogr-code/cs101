@@ -22,21 +22,12 @@ set(lib_sources
 	src/lib/Sorting.h
 	src/lib/Stack.h
 	src/lib/StringBuilder.h
-	src/lib/Utils.h
-	src/lib/Utils.cpp
 	src/lib/Trie.h
 )
 
 set(problems_sources
 	src/Problems/ProblemBacktracking.h
 	src/Problems/ProblemBacktracking.cpp
-	src/Problems/ProblemBits.h
-	src/Problems/ProblemBits.cpp
-	src/Problems/ProblemLinkedLists.h
-	src/Problems/ProblemLinkedLists.cpp
-	src/Problems/ProblemStacks.h
-	src/Problems/ProblemStrings.h
-	src/Problems/ProblemStrings.cpp
 )
 
 set(main_sources
