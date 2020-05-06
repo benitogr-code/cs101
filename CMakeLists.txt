@@ -4,105 +4,105 @@ project (CS101)
 
 set (CMAKE_CXX_STANDARD 11)
 
-include_directories ("${PROJECT_SOURCE_DIR}/CS101")
+include_directories ("${PROJECT_SOURCE_DIR}/src")
 
-set(cs101_sources
-	CS101/CS101/Array.h
-	CS101/CS101/AVLTree.h
-	CS101/CS101/BigInt.h
-	CS101/CS101/BigInt.cpp
-	CS101/CS101/BSTree.h
-	CS101/CS101/DynArray.h
-	CS101/CS101/HashMap.h
-	CS101/CS101/LinkedList.h
-	CS101/CS101/MathUtils.h
-	CS101/CS101/MinHeap.h
-	CS101/CS101/MTQueue.h
-	CS101/CS101/Queue.h
-	CS101/CS101/Sorting.h
-	CS101/CS101/Stack.h
-	CS101/CS101/StringBuilder.h
-	CS101/CS101/Utils.h
-	CS101/CS101/Utils.cpp
-	CS101/CS101/Trie.h
+set(lib_sources
+	src/lib/Array.h
+	src/lib/AVLTree.h
+	src/lib/BigInt.h
+	src/lib/BigInt.cpp
+	src/lib/BSTree.h
+	src/lib/DynArray.h
+	src/lib/HashMap.h
+	src/lib/LinkedList.h
+	src/lib/MathUtils.h
+	src/lib/MinHeap.h
+	src/lib/MTQueue.h
+	src/lib/Queue.h
+	src/lib/Sorting.h
+	src/lib/Stack.h
+	src/lib/StringBuilder.h
+	src/lib/Utils.h
+	src/lib/Utils.cpp
+	src/lib/Trie.h
 )
 
 set(problems_sources
-	CS101/Problems/ProblemBacktracking.h
-	CS101/Problems/ProblemBacktracking.cpp
-	CS101/Problems/ProblemBits.h
-	CS101/Problems/ProblemBits.cpp
-	CS101/Problems/ProblemLinkedLists.h
-	CS101/Problems/ProblemLinkedLists.cpp
-	CS101/Problems/ProblemStacks.h
-	CS101/Problems/ProblemStrings.h
-	CS101/Problems/ProblemStrings.cpp
+	src/Problems/ProblemBacktracking.h
+	src/Problems/ProblemBacktracking.cpp
+	src/Problems/ProblemBits.h
+	src/Problems/ProblemBits.cpp
+	src/Problems/ProblemLinkedLists.h
+	src/Problems/ProblemLinkedLists.cpp
+	src/Problems/ProblemStacks.h
+	src/Problems/ProblemStrings.h
+	src/Problems/ProblemStrings.cpp
 )
 
 set(tests_sources
-	CS101/Tests/BaseTest.h
-	CS101/Tests/TestArray.h
-	CS101/Tests/TestArray.cpp
-	CS101/Tests/TestAVLTree.h
-	CS101/Tests/TestAVLTree.cpp
-	CS101/Tests/TestBigInt.h
-	CS101/Tests/TestBigInt.cpp
-	CS101/Tests/TestBSTree.h
-	CS101/Tests/TestBSTree.cpp
-	CS101/Tests/TestDynArray.h
-	CS101/Tests/TestDynArray.cpp
-	CS101/Tests/TestFibonacci.h
-	CS101/Tests/TestFibonacci.cpp
-	CS101/Tests/TestHashMap.h
-	CS101/Tests/TestHashMap.cpp
-	CS101/Tests/TestLinkedList.h
-	CS101/Tests/TestLinkedList.cpp
-	CS101/Tests/TestMinHeap.h
-	CS101/Tests/TestMinHeap.cpp
-	CS101/Tests/TestMTQueue.h
-	CS101/Tests/TestMTQueue.cpp
-	CS101/Tests/TestProblemBacktracking.h
-	CS101/Tests/TestProblemBacktracking.cpp
-	CS101/Tests/TestProblemBits.h
-	CS101/Tests/TestProblemBits.cpp
-	CS101/Tests/TestProblemLinkedLists.h
-	CS101/Tests/TestProblemLinkedLists.cpp
-	CS101/Tests/TestProblemStacks.h
-	CS101/Tests/TestProblemStacks.cpp
-	CS101/Tests/TestProblemStrings.h
-	CS101/Tests/TestProblemStrings.cpp
-	CS101/Tests/TestQueue.h
-	CS101/Tests/TestQueue.cpp
-	CS101/Tests/TestRunner.h
-	CS101/Tests/TestRunner.cpp
-	CS101/Tests/TestSorting.h
-	CS101/Tests/TestSorting.cpp
-	CS101/Tests/TestStack.h
-	CS101/Tests/TestStack.cpp
-	CS101/Tests/TestStringBuilder.h
-	CS101/Tests/TestStringBuilder.cpp
-	CS101/Tests/TestUtils.h
-	CS101/Tests/TestUtils.cpp
-	CS101/Tests/TestTrie.h
-	CS101/Tests/TestTrie.cpp
+	src/Tests/BaseTest.h
+	src/Tests/TestArray.h
+	src/Tests/TestArray.cpp
+	src/Tests/TestAVLTree.h
+	src/Tests/TestAVLTree.cpp
+	src/Tests/TestBigInt.h
+	src/Tests/TestBigInt.cpp
+	src/Tests/TestBSTree.h
+	src/Tests/TestBSTree.cpp
+	src/Tests/TestDynArray.h
+	src/Tests/TestDynArray.cpp
+	src/Tests/TestFibonacci.h
+	src/Tests/TestFibonacci.cpp
+	src/Tests/TestHashMap.h
+	src/Tests/TestHashMap.cpp
+	src/Tests/TestLinkedList.h
+	src/Tests/TestLinkedList.cpp
+	src/Tests/TestMinHeap.h
+	src/Tests/TestMinHeap.cpp
+	src/Tests/TestMTQueue.h
+	src/Tests/TestMTQueue.cpp
+	src/Tests/TestProblemBacktracking.h
+	src/Tests/TestProblemBacktracking.cpp
+	src/Tests/TestProblemBits.h
+	src/Tests/TestProblemBits.cpp
+	src/Tests/TestProblemLinkedLists.h
+	src/Tests/TestProblemLinkedLists.cpp
+	src/Tests/TestProblemStacks.h
+	src/Tests/TestProblemStacks.cpp
+	src/Tests/TestProblemStrings.h
+	src/Tests/TestProblemStrings.cpp
+	src/Tests/TestQueue.h
+	src/Tests/TestQueue.cpp
+	src/Tests/TestRunner.h
+	src/Tests/TestRunner.cpp
+	src/Tests/TestSorting.h
+	src/Tests/TestSorting.cpp
+	src/Tests/TestStack.h
+	src/Tests/TestStack.cpp
+	src/Tests/TestStringBuilder.h
+	src/Tests/TestStringBuilder.cpp
+	src/Tests/TestUtils.h
+	src/Tests/TestUtils.cpp
+	src/Tests/TestTrie.h
+	src/Tests/TestTrie.cpp
 )
 
 set(main_sources
-	CS101/StdAfx.h
-	CS101/StdAfx.cpp
-	CS101/Main.cpp
+	src/pch.h
+	src/pch.cpp
+	src/main.cpp
 )
 
 add_executable(CS101
-	${cs101_sources}
+	${lib_sources}
 	${problems_sources}
 	${tests_sources}
 	${main_sources}
 )
 
-source_group(CS101 FILES ${cs101_sources})
-source_group(Problems FILES ${problems_sources})
-source_group(Tests FILES ${tests_sources})
+source_group(lib FILES ${lib_sources})
+source_group(problems FILES ${problems_sources})
+source_group(tests FILES ${tests_sources})
 source_group(\\ FILES ${main_sources})
 
 #install (TARGETS CS101 DESTINATION Bin)
