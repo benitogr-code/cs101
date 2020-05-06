@@ -2,7 +2,10 @@
 
 #include "DynArray.h"
 
-namespace CS101
+/**
+	Implements several sorting algorithms
+*/
+namespace Algorithm
 {
 	template<typename T>
 	void SortSelect(CDynArray<T>& items)

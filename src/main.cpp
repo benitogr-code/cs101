@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <limits>
 
+#include "lib/Algorithm.h"
 #include "lib/Array.h"
 #include "lib/AVLTree.h"
 #include "lib/BigInt.h"
@@ -10,7 +11,6 @@
 #include "lib/LinkedList.h"
 #include "lib/MinHeap.h"
 #include "lib/Queue.h"
-#include "lib/Sorting.h"
 #include "lib/Stack.h"
 #include "lib//StringBuilder.h"
 
@@ -27,6 +27,8 @@ int main()
 	CQueue<int> queue;
 	CStack<int> stack;
 	CStringBuilderDefault strBuilder;
+
+	Algorithm::SortSelect(dynArray);
 
 	printf("Press any key to end the application.");
 	getchar();

@@ -7,6 +7,7 @@ set (CMAKE_CXX_STANDARD 11)
 include_directories ("${PROJECT_SOURCE_DIR}/src")
 
 set(lib_sources
+	src/lib/Algorithm.h
 	src/lib/Array.h
 	src/lib/AVLTree.h
 	src/lib/BigInt.h
@@ -17,14 +18,8 @@ set(lib_sources
 	src/lib/LinkedList.h
 	src/lib/MinHeap.h
 	src/lib/Queue.h
-	src/lib/Sorting.h
 	src/lib/Stack.h
 	src/lib/StringBuilder.h
-)
-
-set(problems_sources
-	src/Problems/ProblemBacktracking.h
-	src/Problems/ProblemBacktracking.cpp
 )
 
 set(main_sources
@@ -33,12 +28,10 @@ set(main_sources
 
 add_executable(CS101
 	${lib_sources}
-	${problems_sources}
 	${main_sources}
 )
 
 source_group(lib FILES ${lib_sources})
-source_group(problems FILES ${problems_sources})
 source_group(\\ FILES ${main_sources})
 
 #install (TARGETS CS101 DESTINATION Bin)
