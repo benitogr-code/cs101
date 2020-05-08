@@ -1,6 +1,8 @@
 ## Computer Science 101
 
-This project implements a small collection of data structures and typical computer science algorithms / problems.
+This project implements a small collection of data structures -with basic operations- and sorting algorithms.
+
+[Catch](https://github.com/catchorg/Catch2) test framework is used to unit test and show data structure usage.
 
 ### Data Structures
 
@@ -13,19 +15,14 @@ This project implements a small collection of data structures and typical comput
 * Binary Search Tree (BST)
 * AVL Tree
 * Min Heap
-* Trie
 * String Builder
 * Big Integer
 
-### Algorithms / Problems
+### Algorithms
 
-* Sorting
-	* Select
-	* Bubble
-	* Insert
-	* Merge
-	* Quicksort
-	* Heap sort
-* Eight Queens
-* Knapsack
-* Misc problems: Strings, Bit manipulation, ...
+* Select sort
+* Bubble sort
+* Insert sort
+* Merge sort
+* Quick sort
+* Heap sort
