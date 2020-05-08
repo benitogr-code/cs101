@@ -154,6 +154,18 @@ public:
 		return m_pTail;
 	}
 
+	const SListNode<T>* ItemAt(size_t index) {
+		SListNode<T>* pNode = m_pHead;
+
+		while ((pNode != nullptr) && (index > 0))
+		{
+			pNode = pNode->pNext;
+			index--;
+		}
+
+		return pNode;
+	}
+
 private:
 	SListNode<T>* m_pHead;
 	SListNode<T>* m_pTail;

@@ -26,6 +26,9 @@ set(test_files
 	src/tests/catch.hpp
 	src/tests/Array.test.cpp
 	src/tests/DynArray.test.cpp
+	src/tests/LinkedList.test.cpp
+	src/tests/Queue.test.cpp
+	src/tests/Stack.test.cpp
 )
 
 set(main_sources
