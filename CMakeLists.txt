@@ -6,7 +6,7 @@ set (CMAKE_CXX_STANDARD 11)
 
 include_directories ("${PROJECT_SOURCE_DIR}/src")
 
-set(lib_sources
+set(lib_files
 	src/lib/Algorithm.h
 	src/lib/Array.h
 	src/lib/AVLTree.h
@@ -22,16 +22,24 @@ set(lib_sources
 	src/lib/StringBuilder.h
 )
 
+set(test_files
+	src/tests/catch.hpp
+	src/tests/Array.test.cpp
+	src/tests/DynArray.test.cpp
+)
+
 set(main_sources
 	src/main.cpp
 )
 
 add_executable(CS101
-	${lib_sources}
+	${lib_files}
+	${test_files}
 	${main_sources}
 )
 
-source_group(lib FILES ${lib_sources})
+source_group(lib FILES ${lib_files})
+source_group(tests FILES ${test_files})
 source_group(\\ FILES ${main_sources})
 
 #install (TARGETS CS101 DESTINATION Bin)
