@@ -55,7 +55,7 @@ public:
 
 	bool Contains(const T& value) const
 	{
-		return Contains(m_pRoot, value);
+		return Find(m_pRoot, value);
 	}
 
 	size_t Height() const
@@ -89,18 +89,18 @@ protected:
 		else
 		{
 			const T& nodeData = pNode->data;
-			if (nodeData == value)
-			{
-				return pNode;
-			}
-			else if (nodeData > value)
+			if (value < nodeData)
 			{
 				pNode->pLeft = Insert(pNode->pLeft, value);
 				return pNode;
 			}
-			else
+			else if (nodeData < value)
 			{
 				pNode->pRight = Insert(pNode->pRight, value);
+				return pNode;
+			}
+			else
+			{
 				return pNode;
 			}
 		}
@@ -111,7 +111,7 @@ protected:
 		if (pNode != nullptr)
 		{
 			const T& nodeData = pNode->data;
-			if (nodeData > value)
+			if (value < nodeData)
 			{
 				pNode->pLeft = Remove(pNode->pLeft, value);
 			}
@@ -198,17 +198,17 @@ protected:
 		return std::max<size_t>(GetHeight(pRoot->pLeft), GetHeight(pRoot->pRight)) + 1;
 	}
 
-	bool Contains(const NodeTypePtr& pNode, const T& value) const
+	bool Find(const NodeTypePtr& pNode, const T& value) const
 	{
 		if (pNode == nullptr)
 			return false;
 
-		if (pNode->data == value)
-			return true;
-		else if (pNode->data > value)
+		if (value < pNode->data)
 			return Find(pNode->pLeft, value);
-		else
+		else if (pNode->data < value)
 			return Find(pNode->pRight, value);
+		else
+			return true;
 	}
 
 	NodeTypePtr RemoveSmallestOnRightBranch(NodeTypePtr& pNode)
