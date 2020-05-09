@@ -21,12 +21,13 @@ private:
 			m_data.reserve(Capacity);
 		}
 
-		size_t Append(const std::string& value, size_t offset)
+		size_t Append(const char* szValue, size_t offset)
 		{
+			const size_t inputLength = strlen(szValue);
 			const size_t space = Capacity - m_data.length();
-			const size_t writeCount = std::min(space, value.length() - offset);
+			const size_t writeCount = std::min(space, inputLength - offset);
 
-			m_data.append(value.data() + offset, writeCount);
+			m_data.append(szValue + offset, writeCount);
 			return writeCount;
 		}
 
@@ -53,28 +54,38 @@ public:
 		Append(value);
 	}
 
-	inline CStringBuilder& Append(const std::string& value)
+	CStringBuilder& Append(const std::string& value)
 	{
-		if (!value.empty())
+		return Append(value.c_str());
+	}
+
+	CStringBuilder& AppendLine(const std::string& value)
+	{
+		return AppendLine(value.c_str());
+	}
+
+	inline CStringBuilder& AppendLine(const char* szValue)
+	{
+		return Append(szValue).Append("\n");
+	}
+
+	CStringBuilder& Append(const char* szValue)
+	{
+		const size_t inputLenght = strlen(szValue);
+		if (inputLenght > 0)
 		{
 			size_t pos = 0;
-			while (pos < value.length())
+			while (pos < inputLenght)
 			{
 				SBuffer& buffer = m_data.back();
-				pos += buffer.Append(value, pos);
+				pos += buffer.Append(szValue, pos);
 
 				if (buffer.IsFull())
 					m_data.push_back(SBuffer());
 			}
-			m_totalSize += value.length();
+			m_totalSize += inputLenght;
 		}
 
-		return *this;
-	}
-
-	inline CStringBuilder& AppendLine(const std::string& value)
-	{
-		Append(value + "\n");
 		return *this;
 	}
 

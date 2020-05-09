@@ -8,9 +8,12 @@ TEST_CASE("String builder", "[stringbuilder]") {
 
 	std::string line1 = "A list of city names:";
 	std::string line2 = "\tValencia, Lisbon, Porto, Berlin, Oslo, Rome, etc.";
+	const char* szLine3 = "======";
 
-	builder.AppendLine(line1);
-	builder.Append(line2);
+	builder
+		.AppendLine(line1)
+		.AppendLine(line2)
+		.Append(szLine3);
 
-	REQUIRE(builder.ToString() == (line1 + "\n" + line2));
+	REQUIRE(builder.ToString() == (line1 + "\n" + line2 + "\n" + std::string(szLine3)));
 }
