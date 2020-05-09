@@ -26,6 +26,9 @@ set(test_files
 	src/tests/catch.hpp
 	src/tests/Algorithm.test.cpp
 	src/tests/Array.test.cpp
+	src/tests/AVLTree.test.cpp
+	src/tests/BigInt.test.cpp
+	src/tests/BSTree.test.cpp
 	src/tests/DynArray.test.cpp
 	src/tests/HashMap.test.cpp
 	src/tests/LinkedList.test.cpp
