@@ -6,20 +6,26 @@
 template<typename T>
 struct SAVLTreeNode
 {
-	SAVLTreeNode(const T& _key)
-		: key(_key)
+	SAVLTreeNode(const T& _data)
+		: data(_data)
 		, height(1)
 	{
 
 	}
 
-	T   key;
+	T   data;
 	int height;
 
 	std::shared_ptr<SAVLTreeNode> pLeft;
 	std::shared_ptr<SAVLTreeNode> pRight;
 };
 
+/**
+	AVL Tree
+	A balanced binary tree
+
+	Usage: AVLTree<int>, AVLTree<MyType>
+*/
 template<typename T>
 class CAVLTree
 {
@@ -38,19 +44,24 @@ public:
 		return GetNodeHeight(m_pRoot);
 	}
 
-	void Insert(const T& key)
+	bool Contains(const T& value) const
 	{
-		m_pRoot = Insert(m_pRoot, key);
+		return Find(m_pRoot, value);
 	}
 
-	void Remove(const T& key)
+	void Insert(const T& value)
 	{
-		m_pRoot = Remove(m_pRoot, key);
+		m_pRoot = Insert(m_pRoot, value);
 	}
 
-	void VisitPreOrder(const std::function<void(const T& key)>& visitor)
+	void Remove(const T& value)
 	{
-		VisitPreOrder(m_pRoot, visitor);
+		m_pRoot = Remove(m_pRoot, value);
+	}
+
+	void VisitInOrder(const std::function<void(const T& value)>& visitor)
+	{
+		VisitInOrder(m_pRoot, visitor);
 	}
 
 private:
@@ -83,23 +94,23 @@ private:
 		return pResult;
 	}
 
-	NodeTypePtr AddNode(const T& key) const
+	NodeTypePtr AddNode(const T& value) const
 	{
-		return NodeTypePtr(new NodeType(key));
+		return NodeTypePtr(new NodeType(value));
 	}
 
-	NodeTypePtr Insert(NodeTypePtr pNode, const T& key)
+	NodeTypePtr Insert(NodeTypePtr pNode, const T& value)
 	{
 		// Peform BST insertion
 		if (pNode == nullptr)
-			return AddNode(key);
+			return AddNode(value);
 
-		if (key == pNode->key)
-			return pNode;
-		else if (key < pNode->key)
-			pNode->pLeft = Insert(pNode->pLeft, key);
+		if (value < pNode->data)
+			pNode->pLeft = Insert(pNode->pLeft, value);
+		else if (pNode->data < value)
+			pNode->pRight = Insert(pNode->pRight, value);
 		else
-			pNode->pRight = Insert(pNode->pRight, key);
+			return pNode;
 
 		// Adjust height
 		pNode->height = 1 + std::max(GetNodeHeight(pNode->pLeft), GetNodeHeight(pNode->pRight));
@@ -108,22 +119,22 @@ private:
 		const int balance = GetNodeBalance(pNode);
 
 		// Left-Left
-		if ((balance > 1) && (key < pNode->pLeft->key))
+		if ((balance > 1) && (value < pNode->pLeft->data))
 			return RotateRight(pNode);
 
 		// Right-Right
-		if ((balance < -1) && (key > pNode->pRight->key))
+		if ((balance < -1) && (pNode->pRight->data < value))
 			return RotateLeft(pNode);
 
 		// Left-Right
-		if ((balance > 1) && (key > pNode->pLeft->key))
+		if ((balance > 1) && (pNode->pLeft->data < value))
 		{
 			pNode->pLeft = RotateLeft(pNode->pLeft);
 			return RotateRight(pNode);
 		}
 
 		// Right-Left
-		if ((balance < -1) && (key < pNode->pRight->key))
+		if ((balance < -1) && (value < pNode->pRight->data))
 		{
 			pNode->pRight = RotateRight(pNode->pRight);
 			return RotateLeft(pNode);
@@ -132,19 +143,19 @@ private:
 		return pNode;
 	}
 
-	NodeTypePtr Remove(NodeTypePtr pNode, const T& key)
+	NodeTypePtr Remove(NodeTypePtr pNode, const T& value)
 	{
 		// BST removal
 		if (pNode == nullptr)
 			return pNode;
 
-		if (key < pNode->key)
+		if (value < pNode->data)
 		{
-			pNode->pLeft = Remove(pNode->pLeft, key);
+			pNode->pLeft = Remove(pNode->pLeft, value);
 		}
-		else if (key > pNode->key)
+		else if (pNode->data < value)
 		{
-			pNode->pRight = Remove(pNode->pRight, key);
+			pNode->pRight = Remove(pNode->pRight, value);
 		}
 		else
 		{
@@ -165,8 +176,8 @@ private:
 			{
 				NodeTypePtr pReplacement = FindSmallestKey(pNode);
 
-				pNode->key = pReplacement->key;
-				pNode->pRight = Remove(pNode->pRight, key);
+				pNode->data = pReplacement->data;
+				pNode->pRight = Remove(pNode->pRight, value);
 			}
 		}
 
@@ -241,12 +252,25 @@ private:
 		return pNewRoot;
 	}
 
-	void VisitPreOrder(NodeTypePtr pNode, const std::function<void(const T& key)>& visitor)
+	bool Find(const NodeTypePtr& pNode, const T& value) const
+	{
+		if (pNode == nullptr)
+			return false;
+
+		if (value < pNode->data)
+			return Find(pNode->pLeft, value);
+		else if (pNode->data < value)
+			return Find(pNode->pRight, value);
+		else
+			return true;
+	}
+
+	void VisitInOrder(NodeTypePtr pNode, const std::function<void(const T& value)>& visitor)
 	{
 		if (pNode != nullptr)
 		{
-			visitor(pNode->key);
 			VisitPreOrder(pNode->pLeft, visitor);
+			visitor(pNode->data);
 			VisitPreOrder(pNode->pRight, visitor);
 		}
 	}
