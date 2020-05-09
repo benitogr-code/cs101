@@ -32,6 +32,7 @@ set(test_files
 	src/tests/MinHeap.test.cpp
 	src/tests/Queue.test.cpp
 	src/tests/Stack.test.cpp
+	src/tests/StringBuilder.test.cpp
 )
 
 set(main_sources
