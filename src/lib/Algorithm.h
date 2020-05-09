@@ -36,12 +36,12 @@ namespace Algorithm
 		{
 			for (int j = 0; j < (items.Size() - i - 1); ++j)
 			{
-				if (items[j] <= items[j + 1])
+				if (items[j] <= items[j+1])
 					continue;
 
 				T temp = items[j];
-				items[j] = items[j + 1];
-				items[j + 1] = temp;
+				items[j] = items[j+1];
+				items[j+1] = temp;
 			}
 		}
 	}
@@ -51,11 +51,11 @@ namespace Algorithm
 	{
 		for (int i = 1; i < items.Size(); ++i)
 		{
-			for (int j = i; (j > 0) && (items[j] < items[j - 1]); --j)
+			for (int j = i; (j > 0) && (items[j] < items[j-1]); --j)
 			{
 				T temp = items[j];
-				items[j] = items[j - 1];
-				items[j - 1] = temp;
+				items[j] = items[j-1];
+				items[j-1] = temp;
 			}
 		}
 	}

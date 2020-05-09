@@ -71,12 +71,6 @@ public:
 		}
 	}
 
-	void RemoveNode(size_t idx)
-	{
-		DecreaseKey(idx, MINVALUE);
-		ExtractMin();
-	}
-
 protected:
 	size_t Parent(size_t idx) const
 	{

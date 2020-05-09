@@ -1,19 +1,17 @@
 #pragma once
 
-enum { eHashMapSize = 512 };
-
 template<typename KEY>
 struct SDefaultHash
 {
 	unsigned long operator()(const KEY& key) const
 	{
-		return static_cast<unsigned long>(key) % eHashMapSize;
+		return static_cast<unsigned long>(key);
 	}
 };
 
 /**
 	HashMap
-	Assign key/valure pairs to a indexed bucket.
+	Stores key/valure pairs to a indexed bucket in a table.
 	Each bucket contains a linked list to avoid collisions.
 
 	Usage: CHashMap<int, MyType>, CHashMap<string, MyType, StringHashFunc>, ...
@@ -23,6 +21,7 @@ template<typename KEY, typename VALUE, typename HASH_FUNC = SDefaultHash<KEY>>
 class CHashMap
 {
 private:
+	enum { eHashMapSize = 512 };
 
 	template<typename NODE_KEY, typename NODE_VALUE>
 	class CNode
@@ -37,7 +36,7 @@ private:
 
 		const NODE_KEY& Key() const { return m_key; }
 
-		void        SetValue(const NODE_VALUE& value) { m_value = value; }
+		void SetValue(const NODE_VALUE& value) { m_value = value; }
 		const NODE_VALUE Value() const { return m_value; }
 
 		void   SetNext(CNode* pNode) { m_pNext = pNode; }
@@ -75,7 +74,7 @@ public:
 
 	void Insert(const KEY& key, const VALUE& value)
 	{
-		unsigned long hashIndex = m_hashFunc(key);
+		unsigned long hashIndex = GetHashIndex(key);
 
 		CNode<KEY, VALUE>* pNode = m_pTable[hashIndex];
 		CNode<KEY, VALUE>* pLastNode = nullptr;
@@ -106,7 +105,7 @@ public:
 
 	void Remove(const KEY& key)
 	{
-		unsigned long hashIndex = m_hashFunc(key);
+		unsigned long hashIndex = GetHashIndex(key);
 
 		CNode<KEY, VALUE>* pNode = m_pTable[hashIndex];
 		CNode<KEY, VALUE>* pPrev = nullptr;
@@ -134,7 +133,7 @@ public:
 
 	bool TryGet(const KEY& key, VALUE& outValue) const
 	{
-		unsigned long hashIndex = m_hashFunc(key);
+		unsigned long hashIndex = GetHashIndex(key);
 
 		CNode<KEY, VALUE>* pNode = m_pTable[hashIndex];
 		while (pNode != nullptr)
@@ -149,6 +148,12 @@ public:
 		}
 
 		return false;
+	}
+
+private:
+	unsigned long GetHashIndex(const KEY& key) const
+	{
+		return m_hashFunc(key) % eHashMapSize;
 	}
 
 private:
