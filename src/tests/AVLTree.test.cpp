@@ -70,8 +70,10 @@ TEST_CASE("AVLTree operations", "[avltree]") {
 		std::function<void(const SData& value)> func = std::bind(&CNodeVisitor<SData>::Visit, &visitor, std::placeholders::_1);
 
 		for (int i = 0; i < 64; ++i) {
-			tree.Insert(SData(rand()));
+			tree.Insert(SData(i+1));
 		}
+
+		tree.VisitInOrder(func);
 
 		auto& nodes = visitor.GetData();
 
@@ -80,6 +82,7 @@ TEST_CASE("AVLTree operations", "[avltree]") {
 			sorted &= nodes[i - 1] < nodes[i];
 		}
 
+		REQUIRE(nodes.size() == 64);
 		REQUIRE(sorted == true);
 	}
 }

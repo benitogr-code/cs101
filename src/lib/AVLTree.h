@@ -269,9 +269,9 @@ private:
 	{
 		if (pNode != nullptr)
 		{
-			VisitPreOrder(pNode->pLeft, visitor);
+			VisitInOrder(pNode->pLeft, visitor);
 			visitor(pNode->data);
-			VisitPreOrder(pNode->pRight, visitor);
+			VisitInOrder(pNode->pRight, visitor);
 		}
 	}
 
