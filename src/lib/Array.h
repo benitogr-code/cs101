@@ -63,6 +63,9 @@ public:
 	}
 
 private:
+	CArray(const CArray& rhs);
+	CArray& operator=(const CArray& rhs);
+
 	T& At(size_t pos)
 	{
 		assert(pos < m_size);

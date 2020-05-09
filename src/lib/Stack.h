@@ -79,6 +79,10 @@ public:
 	}
 
 private:
+	CStack(const CStack& rhs);
+	CStack& operator=(const CStack& rhs);
+
+private:
 	SStackItem<T>* m_pTop;
 };
 

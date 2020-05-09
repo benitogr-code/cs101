@@ -151,6 +151,9 @@ public:
 	}
 
 private:
+	CHashMap(const CHashMap& rhs);
+	CHashMap& operator=(const CHashMap& rhs);
+
 	unsigned long GetHashIndex(const KEY& key) const
 	{
 		return m_hashFunc(key) % eHashMapSize;

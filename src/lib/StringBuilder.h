@@ -95,7 +95,6 @@ public:
 	}
 
 private:
-	// Do not implement
 	CStringBuilder(const CStringBuilder& rhs);
 	CStringBuilder& operator=(const CStringBuilder& rhs);
 

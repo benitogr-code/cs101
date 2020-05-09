@@ -78,7 +78,9 @@ public:
 		VisitPostOrder(m_pRoot, visitor);
 	}
 
-protected:
+private:
+	CBSTree(const CBSTree& rhs);
+	CBSTree& operator=(const CBSTree& rhs);
 
 	NodeTypePtr Insert(NodeTypePtr& pNode, const T& value)
 	{

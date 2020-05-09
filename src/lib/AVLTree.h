@@ -34,6 +34,11 @@ private:
 	typedef std::shared_ptr<NodeType> NodeTypePtr;
 
 public:
+	CAVLTree()
+		: m_pRoot(nullptr)
+	{
+	}
+
 	~CAVLTree()
 	{
 		m_pRoot = Clear(m_pRoot);
@@ -65,6 +70,8 @@ public:
 	}
 
 private:
+	CAVLTree(const CAVLTree& rhs);
+	CAVLTree& operator=(const CAVLTree& rhs);
 
 	int GetNodeHeight(const NodeTypePtr& pNode) const
 	{

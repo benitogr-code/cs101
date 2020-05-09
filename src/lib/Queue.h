@@ -91,6 +91,10 @@ public:
 	}
 
 private:
+	CQueue(const CQueue& rhs);
+	CQueue& operator=(const CQueue& rhs);
+
+private:
 	SQueueItem<T>* m_pFront;
 	SQueueItem<T>* m_pBack;
 };

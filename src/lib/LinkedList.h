@@ -167,6 +167,9 @@ public:
 	}
 
 private:
+	CLinkedList& operator=(const CLinkedList& rhs);
+
+private:
 	SListNode<T>* m_pHead;
 	SListNode<T>* m_pTail;
 	size_t        m_size;

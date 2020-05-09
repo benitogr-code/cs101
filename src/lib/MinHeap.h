@@ -143,6 +143,10 @@ protected:
 	}
 
 private:
+	CMinHeap(const CMinHeap& rhs);
+	CMinHeap& operator=(const CMinHeap& rhs);
+
+private:
 	CDynArray<T> m_heapArray;
 	size_t       m_capacity;
 };
